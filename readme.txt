@@ -1,10 +1,10 @@
-=== Google AdSense ==
+=== Google AdSense ===
 Contributors: manojtd
 Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 3.4
-Stable tag: 1.42
+Stable tag: 1.43
 License: GPL2 or later
 
 Google AdSense showcases Google ads on your blog, with full customization.
@@ -39,7 +39,7 @@ Minor changes to validate the readme.txt.
 
 == Upgrade Notice ==
 
-= 1.42 =
+= 1.43 =
 
 Minor changes to validate the readme.txt.
 
@@ -81,6 +81,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V1.43: Minor changes to validate the readme.txt. [Oct 21, 2012]
 * V1.42: Minor changes to validate the readme.txt. [Oct 21, 2012]
 * V1.41: Initial public release of the lite version. [Oct 21, 2012]
 * V1.40: Admin interface modifications. [Sep 30, 2012]
