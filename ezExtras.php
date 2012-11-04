@@ -89,7 +89,7 @@ if (!class_exists("ezExtras")) {
       return '<div class="easy-ads">' . $ad . "</div>\n" ;
     }
     public static function isGoogle($ad) {
-      $isGoogle = strpos($ad, 'googld_ad') !== FALSE ;
+      $isGoogle = strpos($ad, 'google_ad') !== FALSE ;
       return $isGoogle ;
     }
     public static function enforceGCount($ad) {

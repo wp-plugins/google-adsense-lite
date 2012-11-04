@@ -60,6 +60,9 @@ if (!class_exists('AdSense')) {
         $adText = ezExtras::handleDefaultText('', $size) ;
         return $adText ;
       }
+      if (strpos($userid, "pub") === false) {
+        $userid = "pub-" . $userid ;
+      }
       if ($size == '') $size = $this->get('format' . $suffix) ;
       $x = strpos($size, 'x' . $suffix) ;
       $w = substr($size, 0, $x);
@@ -163,7 +166,7 @@ if (!class_exists('AdSense')) {
 
       $option = &$mTab->addTabOption('text', 'userid') ;
       $properties = array('desc' => "Your AdSense Account Name: ",
-                    'title' => "",
+                    'title' => "Enter your AdSense Pub-ID",
                     'value' => "Your AdSense ID",
                     'before' => '<table width="80%"><tr><td width="50%">',
                     'between' => '</td><td width="50%">',
