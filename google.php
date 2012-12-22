@@ -77,7 +77,7 @@ if (!class_exists('AdSense')) {
       $corners = $this->get('corners' . $suffix) ;
 
       $adText = "<script type=\"text/javascript\"><!--\n" .
-        "google_ad_client = \"pub-$userid\";\n" .
+        "google_ad_client = \"$userid\";\n" .
         "google_alternate_color = \"FFFFFF\";\n" .
         "google_ad_width = $w;\n" .
         "google_ad_height = $h;\n" .
