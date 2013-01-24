@@ -353,7 +353,7 @@ if (!class_exists("provider")) {
       if ($this->isActive && $this->get('widget')){
         $widgetClass = ezNS::ns($this->name . 'Widget') ;
         if (!class_exists($widgetClass)) $widgetClass = 'providerWidget' ;
-        eval($widgetClass . '::setProvider(&$this) ;') ;
+        eval($widgetClass . '::setProvider($this) ;') ;
         add_action('widgets_init',
                    create_function('', 'return register_widget("' . $widgetClass . '");'));
       }
@@ -476,7 +476,7 @@ if (!class_exists("provider")) {
         $this->decorateAdBlocks() ;
         // build an ad stack each per position (top, middle, bottom)
         foreach ($this->plugin->positions as $k) {
-          array_push(&$this->plugin->adArrays[$k], $this->adBlocks[$k]->get()) ;
+          array_push($this->plugin->adArrays[$k], $this->adBlocks[$k]->get()) ;
         }
       }
     }

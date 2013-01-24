@@ -2,7 +2,7 @@
 /*
   Plugin Name: Google AdSense
   Plugin URI: http://www.thulasidas.com/adsense
-  Version: 1.45
+  Version: 1.46
   Description: <em>Lite Version</em>: Make more money from your blog using <a href="http://adsense.google.com" target="_blank">Google AdSense</a>). Configure it at <a href="options-general.php?page=google-adsense-lite.php">Settings &rarr; Google AdSense</a>.
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
@@ -88,7 +88,7 @@ class GoogleAdSense extends ezPlugin {
         $this->tabs[$k] = & new $ezClassName($k, $v);
       else
         $this->tabs[$k] = & new provider($k, $v);
-      $this->tabs[$k]->setPlugin(&$this);
+      $this->tabs[$k]->setPlugin($this);
       if (!empty($this->tabs[$k]->options['active']))
         $this->tabs[$k]->isActive = $this->tabs[$k]->options['active']->value;
     }
@@ -100,7 +100,7 @@ class GoogleAdSense extends ezPlugin {
   function filterContent($content) {
     // ezExtras::gFilter($content) ;
     foreach ($this->tabs as $p) {
-      $p->setPlugin(&$this) ;
+      $p->setPlugin($this) ;
       if ($p->isActive) {
         $p->buildAdBlocks() ;
         $p->applyAdminOptions() ;
@@ -131,8 +131,8 @@ class GoogleAdSense extends ezPlugin {
 
   function addAdminPage() {
     $plugin_page = add_options_page(ezNS::$name, ezNS::$name,
-                   'manage_options', basename(ezNS::$CWD), array(&$this, 'renderAdminPage'));
-    add_action('admin_head-'. $plugin_page, array(&$this, 'writeAdminHeader'));
+                   'manage_options', basename(ezNS::$CWD), array($this, 'renderAdminPage'));
+    add_action('admin_head-'. $plugin_page, array($this, 'writeAdminHeader'));
   }
 
   function addWidgets() {
@@ -153,8 +153,8 @@ if (class_exists("GoogleAdSense")) {
   $gAd = new GoogleAdSense() ;
   if (isset($gAd)) {
     ezNS::setStaticVars($gAd->defaults) ;
-    add_action('admin_menu', array(&$gAd, 'addAdminPage')) ;
-    add_filter('the_content', array(&$gAd, 'filterContent')) ;
+    add_action('admin_menu', array($gAd, 'addAdminPage')) ;
+    add_filter('the_content', array($gAd, 'filterContent')) ;
     $gAd->addWidgets() ;
   }
 }

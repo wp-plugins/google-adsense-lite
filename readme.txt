@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.45
+Stable tag: 1.46
 License: GPL2 or later
 
 Google AdSense showcases Google ads on your blog, with full customization.
@@ -35,13 +35,13 @@ The Pro version costs $5.95 and can be [purchased online](http://buy.thulasidas.
 
 = New in this release =
 
-Bug fix.
+Bug fixes (Fatal error: Call-time pass-by-reference has been removed).
 
 == Upgrade Notice ==
 
-= 1.45 =
+= 1.46 =
 
-Bug fix.
+Bug fixes (Fatal error: Call-time pass-by-reference has been removed).
 
 == Screenshots ==
 
@@ -81,6 +81,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V1.46: Bug fixes (Fatal error: Call-time pass-by-reference has been removed). [Jan 24, 2013]
 * V1.45: Bug fix. [Dec 22, 2012]
 * V1.44: Enforcing the Google policy on the number of ads, and making the pub-id entry flexible. [Nov 4, 2012]
 * V1.43: Minor changes to validate the readme.txt. [Oct 21, 2012]

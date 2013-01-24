@@ -81,7 +81,7 @@ if (!class_exists("ezExtras")) {
         $w = substr($key, 0, $x)-20;
         $h = substr($key, $x+1)-20;
         $p = (int)(min($w,$h)/6) ;
-        $ret = '<div style="width:'.$w.'px;height:'.$h.'px;border:1px solid red;margin:10px;"><div style="padding:'.$p.'px;text-align:center;font-family:arial;font-size:8pt;"><p>Your ads will be inserted here by</p><p><b>'.ezNS::$name.'</b>.</p><p>Please go to the plugin admin page to paste your ad code.</p></div></div>' ;
+        $ret = '<div style="width:'.$w.'px;height:'.$h.'px;border:1px solid red;margin:10px;"><div style="padding:'.$p.'px;text-align:center;font-family:arial;font-size:8pt;"><p>Your ads will be inserted here by</p><p><b>'.ezNS::$name.'</b>.</p><p>Please go to the plugin admin page to set up your ad code.</p></div></div>' ;
       }
       return $ret ;
     }

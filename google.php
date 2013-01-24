@@ -49,7 +49,7 @@ if (!class_exists('AdSense')) {
       if ($this->isActive && $this->get('widget')){
         $widgetClass = ezNS::ns($this->name . 'Widget') ;
         if (!class_exists($widgetClass)) $widgetClass = 'providerWidget' ;
-        eval($widgetClass . '::setProvider(&$this) ;') ;
+        eval($widgetClass . '::setProvider($this) ;') ;
         add_action('widgets_init',
           create_function('', 'return register_widget("' . $widgetClass . '");'));
       }
@@ -197,7 +197,7 @@ if (!class_exists('AdSense')) {
                "336x280", "250x250", "120x90", "180x90", "200x90") ;
 
       if (!empty($sizes)) {
-        sort(&$sizes) ;
+        sort($sizes) ;
         foreach ($sizes as $size) {
           $choice = &$select->addChoice($size, $size, $size) ;
         }
@@ -327,7 +327,7 @@ if (!class_exists('AdSense')) {
       $select->set($properties) ;
 
       if (!empty($sizes)) {
-        sort(&$sizes) ;
+        sort($sizes) ;
         foreach ($sizes as $size) {
           $choice = &$select->addChoice($size, $size, $size) ;
         }

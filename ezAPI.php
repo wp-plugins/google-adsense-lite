@@ -947,7 +947,7 @@ if (!class_exists("ezPlugin")) {
     }
     function renderAdminPage() {
       foreach ($this->tabs as $k => $p) {// Dependency injection to tabs
-        $this->tabs[$k]->setPlugin(&$this) ;
+        $this->tabs[$k]->setPlugin($this) ;
       }
       echo '<script type="text/javascript" src="' . $this->URL . '/ezToolTip.js"></script>' . "\n";
       echo '<div class="wrap" style="width:900px">' . "\n";
