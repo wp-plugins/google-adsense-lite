@@ -758,7 +758,7 @@ if (!class_exists("ezAbout")) {
       // $plgName = $this->plugin->baseName ;
       $plgName = 'google-adsense' ;
       $fname = dirname (__FILE__) . '/support.php' ;
-      include($fname) ;
+      include_once($fname) ;
       echo '</div>' ;
 
       $fname = dirname (__FILE__) . '/tail-text.php' ;

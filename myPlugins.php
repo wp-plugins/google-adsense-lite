@@ -2,11 +2,10 @@
 
 $myPlugins = array() ;
 
-$needPHP5 = ' <p> <font color="#c00">Note that this plugin requires PHPv5.0+. Please use the Lite version first to ensure that it works before buying the Pro version. If it does not work on your web host, consider the amazing <a href="http://buy.thulasidas.com/easy-adsense/" title="The most popular plugin to insert AdSense on your blog"><em><strong>Easy AdSense Pro</strong></em></a> for all your advertising needs. It can insert non-AdSense blocks as well.</font></p>' ;
+$needPHP5 = ' <br /> <span style="font-color:#c00;">Note that this plugin requires PHPv5.0+. Please use the Lite version first to ensure that it works before buying the Pro version. If it does not work on your web host, consider the amazing <a href="http://buy.thulasidas.com/easy-adsense/" title="The most popular plugin to insert AdSense on your blog"><em><strong>Easy AdSense Pro</strong></em></a> for all your advertising needs. It can insert non-AdSense blocks as well.</span>' ;
 
 $myPlugins['ezpaypal-pro'] =
   array('value' => 'ezPayPal',
-    'support' => 'YBB5HXSJ97C7E',
     'price' => '9.95',
     'share' => false,
     'long' => false,
@@ -17,18 +16,16 @@ $myPlugins['ezpaypal-pro'] =
 
 $myPlugins['easy-ads'] =
   array('value' => 'Easy Ads',
-    'support' => 'YBB5HXSJ97C7E',
     'price' => '8.95',
     'share' => true,
     'long' => false,
     'blurb' => '<em><strong>Easy Ads</strong></em> is a multi-provider advertising plugin. This streamlined plugin ',
     'desc' => 'showcases AdSense and its alternatives on your blog',
     'title' => '<em><strong>Easy Ads</strong></em> provides a unified and intuitive interface to manage multiple ad providers on your blog. It lets you insert ads provided by <a href="http://www.clicksor.com/pub/index.php?ref=105268" title="Careful, do not double-date with AdSense and Clicksor, they get very jealous of each other!">Clicksor</a>, <a href="http://www.bidvertiser.com/bdv/bidvertiser/bdv_ref_publisher.dbm?Ref_Option=pub&amp;Ref_PID=229404" title="Another fine ad provider">BidVertiser</a> or <a href="http://chitika.com/publishers.php?refid=manojt" title="Compatible with AdSense">Chitika</a> into your existing and future blog posts and pages.',
-    'pro' => 'The Lite version of <em><strong>Easy Ads</strong></em> is fully functional.  In the Pro version, you get a filter to minimize the chance of your AdSense and other accounts getting banned. It uses a fast and effective keyword matching algorithm to examine the contents of each page on the fly and determines whether the page content could look offensive to Google and others. If so, it prevents your ads from appearing on those pages. And you can tweak the strength of the algorithm (for each provider). The Pro version also gives you control over other global options like activating and deactivating various ad providers, resetting all options etc. The Pro version also lets you specify a list of computers where your ads will not be shown, in order to prevent accidental clicks on your own ads -- one of the main reasons the ad providers may ban you.') ;
+    'pro' => 'The Lite version of <em><strong>Easy Ads</strong></em> is fully functional.  In the Pro version, you get a filter to minimize the chance of your AdSense and other accounts getting banned. It uses a fast and effective keyword matching algorithm to examine the contents of each page on the fly and determines whether the page content could look offensive to Google and others. If so, it prevents your ads from appearing on those pages. And you can tweak the strength of the algorithm (for each provider). The Pro version also gives you control over other global options like activating and deactivating various ad providers, resetting all options etc. The Pro version also lets you specify a list of computers where your ads will not be shown, in order to prevent accidental clicks on your own ads -- one of the main reasons the ad providers may ban you.' . $needPHP5) ;
 
 $myPlugins['easy-paypal'] =
   array('value' => 'Easy PayPal',
-    'support' => 'YBB5HXSJ97C7E',
     'price' => '6.95',
     'share' => false,
     'long' => false,
@@ -39,7 +36,6 @@ $myPlugins['easy-paypal'] =
 
 $myPlugins['google-adsense'] =
   array('value' => 'Google AdSense',
-    'support' => '6M4A94KQMA9UL',
     'price' => '5.95',
     'share' => true,
     'long' => false,
@@ -47,11 +43,10 @@ $myPlugins['google-adsense'] =
     'blurb' => '<em><strong>Google AdSense</strong></em> is a single-provider version of <em><strong>Easy Ads</strong></em> specialized for Google AdSense serving. If you are planning to use more than two providers, it may be easier and more economical to use <em><strong>Easy Ads</strong></em>. <em><strong>Google AdSense</strong></em> ',
     'desc' => 'provides you with a fully streamlined interface to manage Google AdSense on your blog.',
     'title' => '<a href="http://buy.thulasidas.com/plugins/google-adsense/" title="A new plugin to handle Google"><em><strong>Google AdSense</strong></em></a> gives you a specialized and intuitive interface to manage AdSense ads on your blog, with size selectors, widget options, color-picker to customize your colors, etc. It is a new generation plugin with a fancy, tabbed interface.',
-    'pro' => 'The Lite version of <em><strong>Google AdSense</strong></em> is fully functional.  But the Pro version gives you more features and control. In the Pro version, you get a filter to minimize the chance of your AdSense account getting banned. It uses a fast and effective keyword matching algorithm to examine the contents of each page on the fly and determines whether the page content could look offensive to Google. If so, it prevents your ads from appearing on those pages. And you can tweak the strength of the algorithm. The Pro version also lets you specify a list of computers where your ads will not be shown, in order to prevent accidental clicks on your own ads -- one of the main reasons AdSense bans you.') ;
+    'pro' => 'The Lite version of <em><strong>Google AdSense</strong></em> is fully functional.  But the Pro version gives you more features and control. In the Pro version, you get a filter to minimize the chance of your AdSense account getting banned. It uses a fast and effective keyword matching algorithm to examine the contents of each page on the fly and determines whether the page content could look offensive to Google. If so, it prevents your ads from appearing on those pages. And you can tweak the strength of the algorithm. The Pro version also lets you specify a list of computers where your ads will not be shown, in order to prevent accidental clicks on your own ads -- one of the main reasons AdSense bans you.' . $needPHP5) ;
 
 $myPlugins['easy-adsense'] =
   array('value' => 'Easy AdSense',
-    'support' => 'HYZ5AWPYSC8VA',
     'price' => '4.95',
     'share' => true,
     'long' => true,
@@ -68,7 +63,6 @@ $myPlugins['easy-adsense'] =
 
 $myPlugins['adsense-now'] =
   array('value' => 'AdSense Now!',
-    'support' => 'UE28AQZUTTX8Q',
     'price' => '3.95',
     'share' => true,
     'long' => true,
@@ -82,7 +76,6 @@ $myPlugins['adsense-now'] =
 
 $myPlugins['theme-tweaker'] =
   array('value' => 'Theme Tweaker',
-    'support' => 'UKPDMR89Z22DN',
     'price' => '3.95',
     'share' => false,
     'long' => true,
@@ -94,9 +87,36 @@ $myPlugins['theme-tweaker'] =
 <li>Ability to create a child theme so that your changes can be applied even when the underlying theme is updated.</li>
 <li>Scanning for *all* the style files in your theme directory to find all possible color definitions.</li>') ;
 
+$myPlugins['easy-quiz'] =
+  array('value' => 'Easy Quiz',
+    'price' => '2.95',
+    'share' => false,
+    'long' => true,
+    'blurb' =>'<em><strong>Easy Quiz</strong></em> is a jQuery quiz plugin that ',
+    'desc' => 'runs a simple but elegant quiz on your posts or pages.',
+    'title' => '<em><strong>Easy Quiz</strong></em> displays the statements or questions you type into your post or page (surrounded by <code>[ezquiz][/ezquiz]</code> tag) as a neat quiz for your reader on his/her browser. The answers are not transfered to your server, and there is no extra server load in running the quiz.',
+    'pro' => '<em><strong>Easy Quiz</strong></em>, in its lite form, comes with a standard color scheme. If you would like to modify the color scheme, please consider the Pro version. It gives you color pickers for all aspects of the quiz display so that you can perfectly match your theme. It also lets you have different types of quizes (true-or-false, fill-in-the-blanks, multiple-choice, etc.), which you can even mix and match within one test. The Lite version of the plugin is fully functional, but is limited to only true-or-false questions.',
+    'benefits' => '<li>Different types of quizes (true-or-false, fill-in-the-blanks, multiple-choice, etc.).</li>
+<li>Ability to mix and match different types of questions within one quiz.</li>
+<li>Ability to tweak the quiz display colors.</li>
+<li>Color pickers for customization with live preview on the admin page.</li>') ;
+
+$myPlugins['easy-text-links'] =
+  array('value' => 'Easy Text Links',
+    'price' => '7.95',
+    'share' => false,
+    'long' => true,
+    'blurb' =>'<em><strong>Easy Text Links</strong></em> is a robust and modern advertising plugin that ',
+    'desc' => 'helps you sell and manage text links on your blog.',
+    'title' => '<em><strong>Easy Text Links</strong></em> helps you make extra revenue from your blog by selling text links. Text link advertising can be significantly more lucrative than contextual ads. This plugin automates the insertion and expiration of the links, and helps you with quick reminder emails to your advertisers. If you get a lot of advertising enquiries for text links, this is the right plugin for you.',
+    'pro' => '<em><strong>Easy Text Links</strong></em>, in its light form, is already a powerful plugin. The Pro version lets you integrate seamlessly with Easy PayPal and fully automate your link sales, expiration and reminder emails.',
+    'benefits' => '<li>Automated link sales and management.</li>
+<li>Automated email reminders, and subscription based links.</li>
+<li>Choice of several attractive Advertise Here images.</li>
+<li>Dedicated dedicated and multi-insertable widget for displaying your links.</li>') ;
+
 $myPlugins['easy-latex'] =
   array('value' => 'Easy WP LaTeX',
-    'support' => 'UFFMGT9QHJY2N',
     'price' => '2.95',
     'share' => false,
     'long' => true,
@@ -107,7 +127,6 @@ $myPlugins['easy-latex'] =
 
 $myPlugins['easy-translator'] =
   array('value' => 'Easy Translator',
-    'support' => '48XZQ7LRDAV28',
     'price' => '1.95' ,
     'share' => false,
     'long' => true,
@@ -118,7 +137,6 @@ $myPlugins['easy-translator'] =
 
 $myPlugins['unreal-universe'] =
   array('value' => 'The Unreal Universe - eBook',
-    'support' => '',
     'url' => 'http://www.theunrealuniverse.com',
     'amazon' => 'http://www.amazon.com/exec/obidos/ASIN/9810575947/unrblo-20',
     'price' => '1.49',
@@ -132,7 +150,6 @@ $myPlugins['unreal-universe'] =
 
 $myPlugins['iphoto-tagger'] =
   array('value' => 'iPhoto Tagger -- Helper for iPhoto imports',
-    'support' => '',
     'price' => '1.99',
     'share' => false,
     'long' => true,
@@ -183,7 +200,7 @@ The Pro version of this plugin gives you more features and benefits. For instanc
 <ol>
 $benefits
 </ol>
-And much more. New features and bug fixes will first appear in the Pro version before being ported to this freely distributed Lite edition. </p>
+And much more. New features and bug fixes will first appear in the Pro version before being ported to this freely distributed Lite edition. <br />
 <input onmouseover="Tip('$yesTip', WIDTH, 200, CLICKCLOSE, true, TITLE, '$yesTitle')" onmouseout="UnTip()" type = "button" id = "ybutton" value = "Go Pro!" onclick = "buttonwhich('Yes')" />
 <input onmouseover="Tip('$noTip', WIDTH, 200, CLICKCLOSE, true, TITLE, '$noTitle')" onmouseout="UnTip()" type = "button" id = "nbutton" value = "No thanks" onclick = "buttonwhich('No')" />
 <script type = "text/javascript">
@@ -220,7 +237,7 @@ echo <<<ENDRATING
 <div class='updated' id='rating'>
 <p>Thanks for using <i><b>$plgLongName</b></i>! $msg <br />
 If you are satisfied with how well it works, why not <a href='http://wordpress.org/extend/plugins/$plgKey/' onclick="popupwindow('http://wordpress.org/extend/plugins/$plgKey/','Rate it', 1024, 768);return false;">rate it</a>
-and <a href='http://wordpress.org/extend/plugins/$plgKey/' <a href='http://wordpress.org/extend/plugins/$plgKey/' onclick="popupwindow('http://wordpress.org/extend/plugins/$plgKey/','Rate it', 1024, 768);return false;">recommend it</a> to others? :-)
+and <a href='http://wordpress.org/extend/plugins/$plgKey/' onclick="popupwindow('http://wordpress.org/extend/plugins/$plgKey/','Rate it', 1024, 768);return false;">recommend it</a> to others? :-)
 <small style='font-weight:normal;'><a id='hideRating' $display href='#' style='float:right; display:block; border:none;'  onmouseover="Tip('$hideTip', WIDTH, 200, CLICKCLOSE, true, TITLE, 'Hide this Box')" onmouseout="UnTip()" onclick = "hideme()">
 Don't show this anymore</a></small></p></div>
 <input type="hidden" id="killRating" name="killRating" value="" />

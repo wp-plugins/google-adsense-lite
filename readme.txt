@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.46
+Stable tag: 1.50
 License: GPL2 or later
 
 Google AdSense showcases Google ads on your blog, with full customization.
@@ -22,6 +22,7 @@ Google AdSense showcases Google ads on your blog, with full customization.
 4. Robust codebase and option/object models.
 5. Control over the positioning and display of ad blocks in each post or page.
 6. Customized Google interface with color pickers.
+7. Available in your own language using machine translation curtsey of Google and Microsoft.
 
 = Pro Version =
 
@@ -35,13 +36,13 @@ The Pro version costs $5.95 and can be [purchased online](http://buy.thulasidas.
 
 = New in this release =
 
-Bug fixes (Fatal error: Call-time pass-by-reference has been removed).
+Adding an admin page translator.
 
 == Upgrade Notice ==
 
-= 1.46 =
+= 1.50 =
 
-Bug fixes (Fatal error: Call-time pass-by-reference has been removed).
+Adding an admin page translator.
 
 == Screenshots ==
 
@@ -77,10 +78,13 @@ Yes! In *Google AdSense*, you have more options [through **custom fields**] to c
 
 = How do I report a bug or ask a question? =
 
-Please report any problems, and share your thoughts and comments [at the plugin forum at WordPress](http://wordpress.org/tags/google-adsense-lite "Post comments/suggestions/bugs on the WordPress.org forum. [Requires login/registration]") Or send an [email to the plugin author](http://manoj.thulasidas.com/mail.shtml "Email the author").
+Please report any problems, and share your thoughts and comments [at the plugin forum at WordPress](http://wordpress.org/tags/google-adsense-lite "Post comments/suggestions/bugs on the WordPress.org forum. [Requires login/registration]") Or [contact me](http://support.thulasidas.com/ "Contact Manoj").
+
+**If you have a question or comment about the Pro version, please do not use the forum hosted at WordPress.org, but [contact the plugin author](http://support.thulasidas.com/ "Contact Manoj") using our support portal.**
 
 == Change Log ==
 
+* V1.50: Adding an admin page translator. [May 22, 2013]
 * V1.46: Bug fixes (Fatal error: Call-time pass-by-reference has been removed). [Jan 24, 2013]
 * V1.45: Bug fix. [Dec 22, 2012]
 * V1.44: Enforcing the Google policy on the number of ads, and making the pub-id entry flexible. [Nov 4, 2012]
