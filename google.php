@@ -101,7 +101,7 @@ if (!class_exists('AdSense')) {
       if ($this->isActive) {
         foreach ($this->plugin->positions as $key) {
           $name = $this->name . '-' . $key ;
-          $this->adBlocks[$key] =& new adBlock($name) ;
+          $this->adBlocks[$key] = new adBlock($name) ;
           $adText = $this->mkAdText() ;
           $adText = ezExtras::handleDefaultText($adText) ;
           $this->adBlocks[$key]->set($adText) ;

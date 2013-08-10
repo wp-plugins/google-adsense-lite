@@ -2,7 +2,7 @@
 /*
   Plugin Name: Google AdSense
   Plugin URI: http://www.thulasidas.com/adsense
-  Version: 1.50
+  Version: 1.60
   Description: <em>Lite Version</em>: Make more money from your blog using <a href="http://adsense.google.com" target="_blank">Google AdSense</a>). Configure it at <a href="options-general.php?page=google-adsense-lite.php">Settings &rarr; Google AdSense</a>.
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
@@ -83,11 +83,11 @@ class GoogleAdSense extends ezPlugin {
       $className = ezNS::ns($k);
       $ezClassName = 'ez' . $k;
       if (class_exists($className))
-        $this->tabs[$k] = & new $className($k, $v);
+        $this->tabs[$k] = new $className($k, $v);
       else if (class_exists($ezClassName))
-        $this->tabs[$k] = & new $ezClassName($k, $v);
+        $this->tabs[$k] = new $ezClassName($k, $v);
       else
-        $this->tabs[$k] = & new provider($k, $v);
+        $this->tabs[$k] = new provider($k, $v);
       $this->tabs[$k]->setPlugin($this);
       if (!empty($this->tabs[$k]->options['active']))
         $this->tabs[$k]->isActive = $this->tabs[$k]->options['active']->value;

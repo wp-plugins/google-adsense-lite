@@ -131,7 +131,7 @@ if (!class_exists("ezOption")) {
     }
     function &addChoice($name) {
       $subname = $this->name . '_' . $name ;
-      $this->choices[$subname] =& new ezOption('radio', $subname) ;
+      $this->choices[$subname] = new ezOption('radio', $subname) ;
       return $this->choices[$subname] ;
     }
     function render() {
@@ -159,7 +159,7 @@ if (!class_exists("ezOption")) {
       if (is_array($this->choices) && array_key_exists($subname, $this->choices)) {
         die("Fatal Error [addChoice]: New Choice $subname already exists in " . $this->name) ;
       }
-      $this->choices[$subname] =&  new ezOption('choice', $subname) ;
+      $this->choices[$subname] = new ezOption('choice', $subname) ;
       $this->choices[$subname]->value = $value ;
       $this->choices[$subname]->desc = $desc ;
       return $this->choices[$subname] ;
@@ -302,9 +302,9 @@ if (!class_exists("ezOption")) {
         die("Fatal Error [addTabOption]: New Option $subname already exists in " . $this->name) ;
       }
       if (class_exists($type)) // Specialized class for this type of input
-        $this->mTabOptions[$key] =& new $type($subname) ;
+        $this->mTabOptions[$key] = new $type($subname) ;
       else
-        $this->mTabOptions[$key] =& new ezOption($type, $subname) ;
+        $this->mTabOptions[$key] = new ezOption($type, $subname) ;
       return $this->mTabOptions[$key] ;
     }
     function render() {
@@ -332,7 +332,7 @@ if (!class_exists("ezOption")) {
       if (array_key_exists($subname, $this->mTabs)) {
         die("Fatal Error [addTab]: New Tab $subname already exists in " . $this->name) ;
       }
-      $this->mTabs[$subname] =& new mTab($subname) ;
+      $this->mTabs[$subname] = new mTab($subname) ;
       return $this->mTabs[$subname] ;
     }
     function render() {
@@ -536,9 +536,9 @@ if (!class_exists("ezTab")) {
         die ("Fatal Error [addOption]: New Option $key already exists in " . $this->name) ;
       }
       if (class_exists($type)) // Specialized class for this type of input
-        $this->options[$key] =& new $type($name) ;
+        $this->options[$key] = new $type($name) ;
       else
-        $this->options[$key] =& new ezOption($type, $name) ;
+        $this->options[$key] = new ezOption($type, $name) ;
       return $this->options[$key] ;
     }
     function &addSubmitButton($type, $key) {
@@ -549,9 +549,9 @@ if (!class_exists("ezTab")) {
         die ("Fatal Error [addSubmitButton]: New Button $name already exists in " . $this->submitButtons) ;
       }
       if (class_exists($type)) // Specialized class for this type of input
-        $this->submitButtons[$key] =& new $type($name) ;
+        $this->submitButtons[$key] = new $type($name) ;
       else
-        $this->submitButtons[$key] =& new ezOption($type, $name) ;
+        $this->submitButtons[$key] = new ezOption($type, $name) ;
       return $this->submitButtons[$key] ;
     }
     // ------------ Content Filter -----------------
@@ -869,8 +869,8 @@ if (!class_exists("ezPlugin")) {
       if ($buildTabs)
         foreach ($defaults['tabs'] as $k => $v) {
           $className = ezNS::ns($k) ;
-          if (class_exists($className)) $this->tabs[$k] =& new $className($k,$v) ;
-          else $this->tabs[$k] =& new ezTab($k,$v) ;
+          if (class_exists($className)) $this->tabs[$k] = new $className($k,$v) ;
+          else $this->tabs[$k] = new ezTab($k,$v) ;
           if (!empty($this->tabs[$k]->options['active']))
             $this->tabs[$k]->isActive = $this->tabs[$k]->options['active']->value ;
         }

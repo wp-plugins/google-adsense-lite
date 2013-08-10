@@ -364,7 +364,7 @@ if (!class_exists("provider")) {
       if ($this->isActive) {
         foreach ($this->plugin->positions as $key) {
           $name = $this->name . '-' . $key ;
-          $this->adBlocks[$key] =& new adBlock($name) ;
+          $this->adBlocks[$key] = new adBlock($name) ;
           $adText = stripslashes($this->get('body')) ; // The option will be called 'body-'.$key
           $adText = ezExtras::handleDefaultText($adText) ;
           $this->adBlocks[$key]->set($adText) ;
