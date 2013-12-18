@@ -466,9 +466,10 @@ if (!class_exists("provider")) {
             if ($this->options[$key]->get() && $fn()) return ;
           }
           else {
-            $errorMessage = '<div style="background-color:#fdd;border: solid 1px #f00; ' .
-              'padding:5px"><p><b><em>ezAPI</em></b>: ' . $this->name .
-              ": Unknown function ($fn) requested in <code>" . __FUNCTION__ . "</code>.</p></div>\n" ;
+            $errorMessage = '<div class="error"><p><b><em>ezAPI</em></b>: ' .
+                    $this->name .
+                    ": Unknown function ($fn) requested in <code>" .
+                    __FUNCTION__ . "</code>.</p></div>\n" ;
             echo $errorMessage ;
           }
         }
@@ -661,14 +662,11 @@ if (!class_exists('Overview')) {
       }
       echo "</table></td>\n" ;
 
-      echo "</tr><tr><td colspan='2'>";
+      echo "</tr></table>\n";
       echo '<div style="background-color:#fcf;padding:5px;border: solid 1px">' ;
       $fname = dirname (__FILE__) . '/support.php' ;
       include_once($fname) ;
       echo '</div>' ;
-      echo "</td";
-
-      echo "</tr></table>\n" ;
     }
   } // End: Class Overview
 }
@@ -781,4 +779,3 @@ if (!class_exists('Admin')) {
 if (!class_exists('About')) {
   class About extends ezAbout {}
 }
-?>

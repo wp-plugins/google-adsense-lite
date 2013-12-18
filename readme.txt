@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
-Tested up to: 3.7
-Stable tag: 1.70
+Tested up to: 3.8
+Stable tag: 1.80
 License: GPL2 or later
 
 Google AdSense showcases Google ads on your blog, with full customization.
@@ -36,13 +36,13 @@ The Pro version costs $5.95 and can be [purchased online](http://buy.thulasidas.
 
 = New in this release =
 
-Compatibility checks for WordPress V3.7.
+Compatibility checks for WordPress V3.8. Bug fixes in options migration.
 
 == Upgrade Notice ==
 
-= 1.70 =
+= 1.80 =
 
-Compatibility checks for WordPress V3.7.
+Compatibility checks for WordPress V3.8. Bug fixes in options migration.
 
 == Screenshots ==
 
@@ -84,6 +84,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V1.80: Compatibility checks for WordPress V3.8. Bug fixes in options migration. [Dec 18, 2013]
 * V1.70: Compatibility checks for WordPress V3.7. [Nov 11, 2013]
 * V1.60: Compatibility with WP3.6. [Aug 10, 2013]
 * V1.50: Adding an admin page translator. [May 22, 2013]

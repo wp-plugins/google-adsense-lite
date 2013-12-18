@@ -2,7 +2,7 @@
 /*
   Plugin Name: Google AdSense
   Plugin URI: http://www.thulasidas.com/adsense
-  Version: 1.70
+  Version: 1.80
   Description: <em>Lite Version</em>: Make more money from your blog using <a href="http://adsense.google.com" target="_blank">Google AdSense</a>). Configure it at <a href="options-general.php?page=google-adsense-lite.php">Settings &rarr; Google AdSense</a>.
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
@@ -40,6 +40,10 @@ if (file_exists(dirname(__FILE__) . '/validate.php')) {
 if (class_exists("easyAds")) {
     die (__("<strong><em>Easy Ads</em></strong> (Lite or Pro) seems to be active.<br /><strong><em>Google AdSense Lite</em></strong> is a subset of <strong><em>Easy Ads</em></strong>. You can activate only one of them.", "easy-adsenser"));
 }
+if (class_exists("GoogleAdSense")) {
+  die (__("<strong><em>Google AdSense Pro</em></strong> seems to be active.<br />You cannot use the Lite version when you have <strong><em>Google AdSense Pro</em></strong> active.", "easy-adsenser"));
+}
+else {
 class GoogleAdSense extends ezPlugin {
   var $adArrays = array() ;
   var $adStacks = array() ;
@@ -161,4 +165,4 @@ if (class_exists("GoogleAdSense")) {
 else {
   add_action('admin_notices', create_function('', 'if (substr( $_SERVER["PHP_SELF"], -11 ) == "plugins.php"|| $_GET["page"] == "google-adsense.php") echo \'<div class="error"><p><b><em>Easy Ads</em></b>: Not Active!</p></div>\';')) ;
 }
-?>
+}

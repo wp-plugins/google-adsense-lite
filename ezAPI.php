@@ -404,13 +404,20 @@ if (!class_exists("ezTab")) {
       $this->checkDependencyInjection(__FUNCTION__) ;
     }
     function migrateOptions() {
-      if (isset($this->options)) $savedOptions = $this->options ;
+      if (isset($this->options)) {
+        $savedOptions = $this->options;
+      }
       unset($this->options) ;
       $this->defineOptions() ;
-      if (!empty($savedOptions) && !empty($this->options))
-        $intersection = array_intersect_key($savedOptions, $this->options) ;
-      if (!empty($intersection)) $this->options = array_merge($this->options,$intersection) ;
-      if (!empty($this->options)) update_option($this->optionName, $this->options) ;
+      if (!empty($savedOptions) && !empty($this->options)) {
+        $intersection = array_intersect_key($savedOptions, $this->options);
+      }
+      if (!empty($intersection)) {
+        $this->options = array_merge($this->options, $intersection);
+      }
+      if (!empty($this->options)) {
+        update_option($this->optionName, $this->options);
+      }
     }
     function resetOptions() {
       delete_option($this->optionName) ;
@@ -897,23 +904,21 @@ if (!class_exists("ezPlugin")) {
       }
     }
     function resetOptions() {
+      delete_option(ezNS::$genOptionName) ;
       foreach ($this->tabs as $key => $p) {
         $p->resetOptions() ;
       }
-      delete_option(ezNS::$genOptionName) ;
     }
     function showOptionMigration() {
       $pluginVersion = $this->getVersion() ;
       $storedVersion = $this->genOptions['Version'] ;
-      $needReset = (int)(10.0*(float)$pluginVersion) ==(int)(10.0*(float)$storedVersion) ;
       if ($storedVersion != $pluginVersion) {
-      echo '<div style="background-color:#fdd;border: solid 1px #f00; padding:5px" id="migrate">',
-        '<form id="genOptionMigrationForm" method="post" action="', $_SERVER["REQUEST_URI"], '">',
+      echo '<div class="error" id="migrate">',
+        '<form id="genOptionMigrationForm" method="post" action="">',
         '<p>Your saved options look out of date. Want to migrate the options to the current version? </p>';
-      if ($needReset) echo '<p>Resetting all the options (and re-entering them) is highly recommended.</p>';
-      echo '<input type = "button" id = "migrateButton" value = "Migrate" onclick = "mButtonWhich(\'' .
-        $pluginVersion . ' \')" />',
-        '<input type = "button" id = "resetButton" value = "Reset" onclick = "mButtonWhich(\'\')" />',
+      echo '<p>Resetting all the options (and re-entering them) is highly recommended.</p>';
+      echo '<input type = "button" id = "migrateButton" value = "Migrate" onclick = "mButtonWhich(\'Migrate\')" />',
+        '<input type = "button" id = "resetButton" value = "Reset" onclick = "mButtonWhich(\'Reset\')" />',
         '<input type="hidden" id="genOptionMigration" name="genOptionMigration" value="none" />',
         '<input type="hidden" id="genOptionReset" name="genOptionReset" value="none" />',
         '</form>',
@@ -934,13 +939,23 @@ if (!class_exists("ezPlugin")) {
       }
     }
     function handleOptionMigration() {
-      if (!empty($_POST['genOptionMigration'])) $action = $_POST['genOptionMigration'] ;
+      if (!empty($_POST['genOptionMigration'])) {
+        $action = $_POST['genOptionMigration'];
+      }
       if (isset($action)) {
         $pluginVersion = $this->getVersion() ;
-        $submitMessage = '<div class="updated"><p><strong>' . $this->name .
-          " Options migrated to $pluginVersion.</strong></p> </div>" ;
-        if ($action = "Migrate") $this->migrateOptions() ;
-        if ($action = "Reset") $this->resetOptions() ;
+        if ($action == "Migrate") {
+          $submitMessage = '<div class="updated"><p><strong>' .
+                  $this->name .
+                  " Options migrated to $pluginVersion.</strong></p> </div>" ;
+          $this->migrateOptions();
+        }
+        if ($action == "Reset") {
+          $submitMessage = '<div class="updated"><p><strong>' .
+                  $this->name .
+                  " Options reset to $pluginVersion.</strong></p> </div>" ;
+          $this->resetOptions();
+        }
         $this->genOptions['Version'] = $pluginVersion ;
         update_option($this->genOptionName, $this->genOptions) ;
         return $submitMessage ;
