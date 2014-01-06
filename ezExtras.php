@@ -112,5 +112,3 @@ if (!class_exists("ezExtras")) {
     }
   } //End: Class ezExtras
 }
-
-?>

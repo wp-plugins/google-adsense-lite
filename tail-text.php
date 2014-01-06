@@ -52,7 +52,7 @@ function renderPlg($name, $plg) {
     return;
   }
   $plugindir = get_option('siteurl') . '/' . PLUGINDIR . '/' . basename(dirname(__FILE__));
-  if (!empty($plg['kind']) && $plg['kind'] != '' && $plg['kind'] != 'plugin') {
+  if (!empty($plg['kind']) && $plg['kind'] != 'plugin') {
     return;
   }
   $value = '<em><strong>' . $plg['value'] . '</strong></em>';
@@ -62,10 +62,11 @@ function renderPlg($name, $plg) {
   $link = '<b><a href="' . $url . '" target="_blank">' . $value . '</a></b>&nbsp; ';
   $text = $link . $desc;
   $price = $plg['price'];
+  $onclick = "onclick=\"popupwindow('http://buy.thulasidas.com/$name','Get {$plg['value']}', 1024, 768);return false;\"";
   $moreInfo = "&nbsp;&nbsp;<a href='http://www.thulasidas.com/plugins/$name' title='More info about $value at Unreal Blog'>More Info</a> ";
   $liteVersion = "&nbsp;&nbsp; <a href='http://buy.thulasidas.com/lite/$name.zip' title='Download the Lite version of $value'>Get Lite Version</a> ";
-  $proVersion = "&nbsp;&nbsp; <a href='http://buy.thulasidas.com/$name' title='Buy the Pro version of $value for \$$price' onclick=\"popupwindow('http://buy.thulasidas.com/$name','Get {$plg['value']}', 1024, 768);return false;\">Get Pro Version</a><br />";
-  $why = "<a href='http://buy.thulasidas.com/$name' title='Buy the Pro version of the $name plugin' onclick=\"popupwindow('http://buy.thulasidas.com/$name','Get {$plg['value']}', 1024, 768);return false;\"><img src='$plugindir/ezpaypal.png' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a>
+  $proVersion = "&nbsp;&nbsp; <a href='http://buy.thulasidas.com/$name' title='Buy the Pro version of $value for \$$price' $onclick>Get Pro Version</a><br />";
+  $why = "<a href='http://buy.thulasidas.com/$name' title='Buy the Pro version of the $name plugin' $onclick><img src='$plugindir/ezpaypal.png' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a>
 <br />" . $plg['pro'];
   echo "<li>" . makeTextWithTooltip($text, $title, $value, 350) .
   "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" .
@@ -88,13 +89,14 @@ function renderBook($name, $plg) {
   $link = '<b><a href="' . $url . '" target="_blank">' . $value . '</a></b>&nbsp; ';
   $text = $link . $desc;
   $price = $plg['price'];
-  $moreInfo = "&nbsp;&nbsp; <a href='$url' title='More info about $value'>More Info</a> ";
+  $onclick = "onclick=\"popupwindow('http://buy.thulasidas.com/$name','Get {$plg['value']}', 1024, 768);return false;\"";
+  $moreInfo = "&nbsp;&nbsp; <a href='$url' title='More info about $value' target=_blank>More Info</a> ";
   $amazon = $plg['amazon'];
   if (!empty($amazon)) {
-    $buyAmazon = "&nbsp;&nbsp; <a href='$amazon' title='Get $value from Amazon.com'>Get it at Amazon</a> ";
+    $buyAmazon = "&nbsp;&nbsp; <a href='$amazon' title='Get $value from Amazon.com' target=_blank>Get it at Amazon</a> ";
   }
-  $buyNow = "&nbsp;&nbsp; <a href='http://buy.thulasidas.com/$name' title='Buy and download $value for \$$price'>Buy and Download now!</a><br />";
-  $why = "<a href='http://buy.thulasidas.com/$name' title='$name' onclick=\"popupwindow('http://buy.thulasidas.com/$name','Get {$plg['value']}', 1024, 768);return false;\"><img src='$plugindir/ezpaypal.png' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a>
+  $buyNow = "&nbsp;&nbsp; <a href='http://buy.thulasidas.com/$name' title='Buy and download $value for \$$price' target=_blank $onclick>Buy and Download now!</a><br />";
+  $why = "<a href='http://buy.thulasidas.com/$name' title='$name' $onclick><img src='$plugindir/ezpaypal.png' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a>
 <br />" . $title . $desc . " $value costs only \$$price -- direct from the author.";
   echo "<li>" . makeTextWithTooltip($text, $title, $value, 350) .
   "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" .

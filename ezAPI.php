@@ -1014,5 +1014,3 @@ if (!class_exists("ezPlugin")) {
     }
   } //End: Class ezPlugin
 }
-
-?>
