@@ -1,12 +1,12 @@
 <?php
 
 /*
-  Copyright (C) 2010 www.thulasidas.com
+  Copyright (C) 2008 www.ads-ez.com
 
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 3 of the License, or (at
-  your option) any later version.
+  This program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License as
+  published by the Free Software Foundation; either version 3 of the
+  License, or (at your option) any later version.
 
   This program is distributed in the hope that it will be useful, but
   WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -134,13 +134,14 @@ if (!class_exists('AdSense')) {
       unset($this->options);
 
       $option = &$this->addOption('message', 'intro');
-      $properties = array('desc' => "About " . $this->name,
+      $properties = array('desc' => sprintf(__("About %s", 'easy-ads'), $this->name),
           'before' => '<br /><table><tr><th colspan="3"><h4>',
           'after' => '</h4></th></tr><tr align="left" valign="middle"><td width="20%">');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'active');
-      $properties = array('desc' => '&nbsp;' . 'Activate ' . $this->name . '?',
+      $properties = array('desc' => '&nbsp;' .
+          sprintf(__("Activate %s?", 'easy-ads'), $this->name),
           'title' => "Check to activate " . $this->name,
           'value' => true,
           'before' => '',
@@ -170,29 +171,29 @@ if (!class_exists('AdSense')) {
       // >>> Mini Tab
       $miniTab = &$this->addOption('miniTab', 'textTab');
       $properties = array('desc' => 'Tabbie',
-          'title' => " tab interface ",
+          'title' => __(" tab interface ", 'easy-ads'),
           'value' => $this->name,
           'before' => '<table><tr align="center" valign="top"><td width="55%"><br />',
           'after' => '</td>');
       $miniTab->set($properties);
 
       $mTab = &$miniTab->addTab('body');
-      $properties = array('desc' => 'Unit',
-          'title' => " tab interface ",
+      $properties = array('desc' => __('Unit', 'easy-ads'),
+          'title' => __(" tab interface ", 'easy-ads'),
           'value' => $this->name . 'body');
       $mTab->set($properties);
 
       $option = &$mTab->addTabOption('message', 'unit');
-      $properties = array('desc' => '<b>Select Unit Options for your ' . $this->name . ' ads </b>',
-          'title' => 'Format, Type and Fallback Options',
+      $properties = array('desc' => '<b>' . sprintf(__('Select Unit Options for your %s ads', 'easy-ads'), $this->name) . ' </b>',
+          'title' => __('Format, Type and Fallback Options', 'easy-ads'),
           'value' => '',
           'before' => '',
           'after' => '<br />');
       $option->set($properties);
 
       $option = &$mTab->addTabOption('text', 'userid');
-      $properties = array('desc' => "Your AdSense Account Name: ",
-          'title' => "Enter your AdSense Pub-ID",
+      $properties = array('desc' => __("Your AdSense Account Name: ", 'easy-ads'),
+          'title' => __("Enter your AdSense Pub-ID", 'easy-ads'),
           'value' => "Your AdSense ID",
           'before' => '<table width="80%"><tr><td width="50%">',
           'between' => '</td><td width="50%">',
@@ -200,7 +201,7 @@ if (!class_exists('AdSense')) {
       $option->set($properties);
 
       $option = &$mTab->addTabOption('text', 'channel');
-      $properties = array('desc' => "AdSense Channel: ",
+      $properties = array('desc' => __("AdSense Channel: ", 'easy-ads'),
           'title' => "",
           'value' => "AdSense Default",
           'before' => '<tr><td>',
@@ -209,8 +210,8 @@ if (!class_exists('AdSense')) {
       $option->set($properties);
 
       $select = &$mTab->addTabOption('select', 'format');
-      $properties = array('desc' => 'Format',
-          'title' => 'Choose the Format',
+      $properties = array('desc' => __('Format', 'easy-ads'),
+          'title' => __('Choose the Format', 'easy-ads'),
           'value' => "300x250",
           'style' => 'width:80%',
           'before' => '<tr><td width="50%">',
@@ -230,25 +231,25 @@ if (!class_exists('AdSense')) {
       }
 
       $select = &$mTab->addTabOption('select', 'type');
-      $properties = array('desc' => 'Type',
-          'title' => 'Type option is not fully implemented yet',
+      $properties = array('desc' => __('Type', 'easy-ads'),
+          'title' => __('Type option is not fully implemented yet', 'easy-ads'),
           'value' => "mpu",
           'style' => 'width:80%',
           'before' => '<tr><td>',
           'between' => '</td><td>',
           'after' => '</td></tr>');
       $select->set($properties);
-      $types = array('text' => "Text Ad",
-          'image' => "Image Ad",
-          'text_image' => "Text and Image");
+      $types = array('text' => __("Text Ad", 'easy-ads'),
+          'image' => __("Image Ad", 'easy-ads'),
+          'text_image' => __("Text and Image", 'easy-ads'));
 
       foreach ($types as $key => $type) {
         $choice = &$select->addChoice($key, $key, $type);
       }
 
       $select = &$mTab->addTabOption('select', 'corners');
-      $properties = array('desc' => 'Corner Style',
-          'title' => 'Google lets you choose normal (squre) corners or rounded ones.',
+      $properties = array('desc' => __('Corner Style', 'easy-ads'),
+          'title' => __('Google lets you choose normal (squre) corners or rounded ones.', 'easy-ads'),
           'value' => "rc:0",
           'style' => 'width:80%',
           'before' => '<tr><td>',
@@ -257,8 +258,8 @@ if (!class_exists('AdSense')) {
       $select->set($properties);
 
       $corners = array(
-          'rc:0' => "Normal",
-          'rc:6' => "Rounded");
+          'rc:0' => __("Normal", 'easy-ads'),
+          'rc:6' => __("Rounded", 'easy-ads'));
 
       foreach ($corners as $key => $corner) {
         $choice = &$select->addChoice($key, $key, $corner);
@@ -266,22 +267,22 @@ if (!class_exists('AdSense')) {
 
       ////////////
       $mTab = &$miniTab->addTab('colors');
-      $properties = array('desc' => 'Colors',
-          'title' => "Set AdSense Colors",
+      $properties = array('desc' => __('Colors', 'easy-ads'),
+          'title' => __("Set AdSense Colors", 'easy-ads'),
           'value' => $this->name . 'colors');
       $mTab->set($properties);
 
       $option = &$mTab->addTabOption('message', 'colors');
-      $properties = array('desc' => '<b>Pick colors for your ' . $this->name . ' ads </b>',
-          'title' => 'Click on the color to popup a color picker',
+      $properties = array('desc' => '<b>' . sprintf(__('Pick colors for your %s ads', 'easy-ads'), $this->name) . ' </b>',
+          'title' => __('Click on the color to popup a color picker', 'easy-ads'),
           'value' => '',
           'after' => '<br />');
       $option->set($properties);
 
       $option = &$mTab->addTabOption('colorPicker', 'linkcolor');
-      $properties = array('desc' => 'Link color: ',
+      $properties = array('desc' => __('Link color: ', 'easy-ads'),
           'value' => '164675',
-          'title' => "Type in or pick color",
+          'title' => __("Type in or pick color", 'easy-ads'),
           'style' => 'width:80%',
           'before' => '<table width="80%"><tr><td width="50%">',
           'between' => '</td><td width="50%">',
@@ -289,9 +290,9 @@ if (!class_exists('AdSense')) {
       $option->set($properties);
 
       $option = &$mTab->addTabOption('colorPicker', 'urlcolor');
-      $properties = array('desc' => 'URL color: ',
+      $properties = array('desc' => __('URL color: ', 'easy-ads'),
           'value' => '2666F5',
-          'title' => "Type in or pick color",
+          'title' => __("Type in or pick color", 'easy-ads'),
           'style' => 'width:80%',
           'before' => '<table width="80%"><tr><td width="50%">',
           'between' => '</td><td width="50%">',
@@ -299,9 +300,9 @@ if (!class_exists('AdSense')) {
       $option->set($properties);
 
       $option = &$mTab->addTabOption('colorPicker', 'textcolor');
-      $properties = array('desc' => 'Text color: ',
+      $properties = array('desc' => __('Text color: ', 'easy-ads'),
           'value' => '333333',
-          'title' => "Type in or pick color",
+          'title' => __("Type in or pick color", 'easy-ads'),
           'style' => 'width:80%',
           'before' => '<tr><td>',
           'between' => '</td><td>',
@@ -309,9 +310,9 @@ if (!class_exists('AdSense')) {
       $option->set($properties);
 
       $option = &$mTab->addTabOption('colorPicker', 'bgcolor');
-      $properties = array('desc' => 'Background color: ',
+      $properties = array('desc' => __('Background color: ', 'easy-ads'),
           'value' => '#FFFFFF',
-          'title' => "Type in or pick color",
+          'title' => __("Type in or pick color", 'easy-ads'),
           'style' => 'width:80%',
           'before' => '<tr><td>',
           'between' => '</td><td>',
@@ -319,9 +320,9 @@ if (!class_exists('AdSense')) {
       $option->set($properties);
 
       $option = &$mTab->addTabOption('colorPicker', 'bordercolor');
-      $properties = array('desc' => 'Border color: ',
+      $properties = array('desc' => __('Border color: ', 'easy-ads'),
           'value' => 'B0C9EB',
-          'title' => "Type in or pick color",
+          'title' => __("Type in or pick color", 'easy-ads'),
           'style' => 'width:80%',
           'before' => '<tr><td>',
           'between' => '</td><td>',
@@ -330,22 +331,22 @@ if (!class_exists('AdSense')) {
 
       ///////////////////
       $mTab = &$miniTab->addTab('widget');
-      $properties = array('desc' => 'Widget',
-          'title' => "Set AdSense Widget",
+      $properties = array('desc' => __('Widget', 'easy-ads'),
+          'title' => __("Set AdSense Widget", 'easy-ads'),
           'value' => $this->name . 'widget');
       $mTab->set($properties);
 
       $option = &$mTab->addTabOption('checkbox', 'widget');
-      $properties = array('desc' => 'Enable widgets for ' . $this->name,
-          'title' => "Widgets can be added from",
+      $properties = array('desc' => sprintf(__('Enable widgets for %s', 'easy-ads'), $this->name),
+          'title' => __("Widgets can be added from", 'easy-ads'),
           'value' => true,
           'before' => '&nbsp;',
           'after' => '<br />');
       $option->set($properties);
 
       $select = &$mTab->addTabOption('select', 'widgetformat');
-      $properties = array('desc' => 'Widget Format',
-          'title' => 'Choose the Format (size)',
+      $properties = array('desc' => __('Widget Format', 'easy-ads'),
+          'title' => __('Choose the Format (size)', 'easy-ads'),
           'value' => "160x600",
           'style' => 'width:30%',
           'before' => '&nbsp;',
@@ -360,7 +361,7 @@ if (!class_exists('AdSense')) {
       }
 
       $msg = &$mTab->addTabOption('message', 'widgetLink');
-      $properties = array('desc' => 'Go to <a href="widgets.php"> Appearance &rarr; Widgets</a> to find <br /> and place this widget on your sidebar',
+      $properties = array('desc' => sprintf(__('Go to %s to find and place this widget on your sidebar', 'easy-ads'), '<a href="widgets.php"> ' . __('Appearance', 'easy-ads') . ' &rarr; ' . __('Widgets', 'easy-ads') . '</a>'),
           'before' => '<br >',
           'after' => '<br />');
       $msg->set($properties);
@@ -369,7 +370,7 @@ if (!class_exists('AdSense')) {
 
       $option = &$this->addOption('message', 'alignment');
       $properties = array(
-          'desc' => "<b>Ad Alignment. Where to show ad blocks?</b>",
+          'desc' => "<b>" . __("Ad Alignment. Where to show ad blocks?", 'easy-ads') . "</b>",
           'before' => '<td align="center"><table><tr align="center" valign="middle"><th colspan="5">',
           'after' => "</th></tr>\n" . '<tr align="center" valign="middle">' .
           '<td>&nbsp;</td><td>&nbsp;Align Left&nbsp;</td><td>&nbsp;Center&nbsp;</td>' .
@@ -377,8 +378,8 @@ if (!class_exists('AdSense')) {
       $option->set($properties);
 
       $radio = &$this->addOption('radio', 'show_top');
-      $properties = array('desc' => 'Top',
-          'title' => 'Where to show the top ad block?',
+      $properties = array('desc' => __('Top', 'easy-ads'),
+          'title' => __('Where to show the top ad block?', 'easy-ads'),
           'value' => "left",
           'before' => '<tr align="center" valign="middle"><td>Top</td>',
           'after' => '</tr>');
@@ -409,8 +410,8 @@ if (!class_exists('AdSense')) {
       $choice->set($properties);
 
       $radio = &$this->addOption('radio', 'show_middle');
-      $properties = array('desc' => 'Middle',
-          'title' => 'Where to show the mid-text ad block?',
+      $properties = array('desc' => __('Middle', 'easy-ads'),
+          'title' => __('Where to show the mid-text ad block?', 'easy-ads'),
           'value' => "left",
           'before' => '<tr align="center" valign="middle"><td>Middle</td>',
           'after' => '</tr>');
@@ -441,8 +442,8 @@ if (!class_exists('AdSense')) {
       $choice->set($properties);
 
       $radio = &$this->addOption('radio', 'show_bottom');
-      $properties = array('desc' => 'Bottom',
-          'title' => 'Where to show the bottom ad block?',
+      $properties = array('desc' => __('Bottom', 'easy-ads'),
+          'title' => __('Where to show the bottom ad block?', 'easy-ads'),
           'value' => "right",
           'after' => '<br />',
           'before' => '<tr align="center" valign="middle"><td>Bottom</td>',
@@ -475,14 +476,14 @@ if (!class_exists('AdSense')) {
 
       $option = &$this->addOption('message', 'show_or_hide');
       $properties = array(
-          'desc' => "<b>Suppress Ad Blocks in:&nbsp;&nbsp;</b>",
+          'desc' => "<b>" . __("Suppress Ad Blocks in:", 'easy-ads') . "</b>",
           'before' => '<table><tr align="center" valign="middle"><td>',
           'after' => '</td><td></td></tr>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_feed');
-      $properties = array('desc' => 'RSS feeds',
-          'title' => "RSS feeds from your blog",
+      $properties = array('desc' => __('RSS feeds', 'easy-ads'),
+          'title' => __("RSS feeds from your blog", 'easy-ads'),
           'value' => true,
           'before' => '<tr><td>&nbsp;',
           'after' => '</td>');
@@ -490,74 +491,73 @@ if (!class_exists('AdSense')) {
 
       $option = &$this->addOption('checkbox', 'kill_page');
       $properties = array('desc' =>
-          '<a href="http://codex.wordpress.org/Pages" target="_blank" ' .
-          'title=" Click to see the difference between posts and pages">' .
-          'Static Pages</a>',
-          'title' => "Ads appear only on blog posts, not on blog pages",
+          '<a href="http://codex.wordpress.org/Pages" target="_blank">' .
+          __('Static Pages', 'easy-ads') . '</a>',
+          'title' => __("Ads appear only on blog posts, not on blog pages. Click to see the difference between posts and pages.", 'easy-ads'),
           'value' => true,
           'before' => '<td>&nbsp;',
           'after' => '</td></tr>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_home');
-      $properties = array('desc' => "Home Page",
-          'title' => "Home Page and Front Page are the same for most blogs",
+      $properties = array('desc' => __("Home Page", 'easy-ads'),
+          'title' => __("Home Page and Front Page are the same for most blogs", 'easy-ads'),
           'value' => false,
           'before' => '<tr><td>&nbsp;',
           'after' => '</td>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_front_page');
-      $properties = array('desc' => "Front Page",
-          'title' => "Home Page and Front Page are the same for most blogs",
+      $properties = array('desc' => __("Front Page", 'easy-ads'),
+          'title' => __("Home Page and Front Page are the same for most blogs", 'easy-ads'),
           'value' => false,
           'before' => '<td>&nbsp;',
           'after' => '</td></tr>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_attachment');
-      $properties = array('desc' => "Attachment Page",
-          'title' => "Pages that show attachments",
+      $properties = array('desc' => __("Attachment Page", 'easy-ads'),
+          'title' => __("Pages that show attachments", 'easy-ads'),
           'value' => true,
           'before' => '<tr><td>&nbsp;',
           'after' => '</td>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_category');
-      $properties = array('desc' => "Category Pages",
-          'title' => "Pages that come up when you click on category names",
+      $properties = array('desc' => __("Category Pages", 'easy-ads'),
+          'title' => __("Pages that come up when you click on category names", 'easy-ads'),
           'value' => true,
           'before' => '<td>&nbsp;',
           'after' => '</td></tr>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_search');
-      $properties = array('desc' => "Search Page",
-          'title' => "Pages that show search results",
+      $properties = array('desc' => __("Search Page", 'easy-ads'),
+          'title' => __("Pages that show search results", 'easy-ads'),
           'value' => true,
           'before' => '<tr><td>&nbsp;',
           'after' => '</td>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_sticky');
-      $properties = array('desc' => "Sticky Front Page",
-          'title' => "Post that is defined as the sticky front page",
+      $properties = array('desc' => __("Sticky Front Page", 'easy-ads'),
+          'title' => __("Post that is defined as the sticky front page", 'easy-ads'),
           'value' => false,
           'before' => '<td>&nbsp;',
           'after' => '</td></tr>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_tag');
-      $properties = array('desc' => "Tag Pages",
-          'title' => "Pages that come up when you click on tag names",
+      $properties = array('desc' => __("Tag Pages", 'easy-ads'),
+          'title' => __("Pages that come up when you click on tag names", 'easy-ads'),
           'value' => true,
           'before' => '<tr><td>&nbsp;',
           'after' => '</td>');
       $option->set($properties);
 
       $option = &$this->addOption('checkbox', 'kill_archive');
-      $properties = array('desc' => "Archive Pages",
-          'title' => "Pages that come up when you click on year/month archives",
+      $properties = array('desc' => __("Archive Pages", 'easy-ads'),
+          'title' => __("Pages that come up when you click on year/month archives", 'easy-ads'),
           'value' => true,
           'before' => '<td>&nbsp;',
           'after' => '</td></tr></table></td></tr></table>');

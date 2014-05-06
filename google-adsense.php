@@ -3,7 +3,7 @@
 /*
   Plugin Name: Google AdSense
   Plugin URI: http://www.thulasidas.com/adsense
-  Version: 2.00
+  Version: 2.10
   Description: <em>Lite Version</em>: Make more money from your blog using <a href="http://adsense.google.com" target="_blank">Google AdSense</a>). Configure it at <a href="options-general.php?page=google-adsense-lite.php">Settings &rarr; Google AdSense</a>.
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
@@ -26,26 +26,16 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (file_exists(dirname(__FILE__) . '/validate.php')) {
-  $fname = dirname(__FILE__) . '/validate.php';
-  include($fname);
-  $fname = dirname(__FILE__) . '/ezAPI.php';
-  include($fname);
-  $fname = dirname(__FILE__) . '/ezExtras.php';
-  @include($fname);
-  $fname = dirname(__FILE__) . '/providers.php';
-  include($fname);
-  $fname = dirname(__FILE__) . '/google.php';
-  include($fname);
-}
-
+$plg = "Google AdSense Lite";
 if (class_exists("GoogleAdSense")) {
-  die(__("<strong><em>Google AdSense Pro</em></strong> seems to be active.<br />You cannot use the Lite version when you have <strong><em>Google AdSense Pro</em></strong> active.", "easy-adsenser"));
-}
-else if (class_exists("easyAds")) {
-  die(__("<strong><em>Easy Ads</em></strong> (Lite or Pro) seems to be active.<br /><strong><em>Google AdSense Lite</em></strong> is a subset of <strong><em>Easy Ads</em></strong>. You can activate only one of them.", "easy-adsenser"));
+  $lite = plugin_basename(__FILE__);
+  include_once('ezDenyLite.php');
+  ezDenyLite($plg, $lite);
 }
 else {
+  $plgFile = __FILE__;
+  $pwd = dirname($plgFile);
+  require($pwd . '/validate.php');
 
   class GoogleAdSense extends ezPlugin {
 
@@ -55,7 +45,7 @@ else {
     var $slug;
 
     function GoogleAdSense() { // Constructor
-      ezNS::setNS(__FILE__, PLUGINDIR, $killLite=true);
+      ezNS::setNS(__FILE__, PLUGINDIR, $killLite = true);
       $this->slug = 'google-adsense';
       $this->CWD = ezNS::$CWD;
       $this->baseName = ezNS::$baseName;
@@ -112,11 +102,11 @@ else {
       $this->plgURL = $this->URL;
       if (is_admin()) {
         require_once($this->plgDir . '/EzTran.php');
-        $this->ezTran = new EzTran($this->plgDir . "/google-adsense.php", "Google AdSense", "google-adsense");
+        $this->ezTran = new EzTran(__FILE__, "Google AdSense", "easy-ads");
         $this->ezTran->setLang();
-        require_once($this->plgDir . '/myPlugins.php');
-        $slug = 'google-adsense';
-        $plg = $myPlugins[$slug];
+        require($this->plgDir . '/myPlugins.php');
+        $slug = $this->slug;
+        $plg = $this->myPlugins[$slug];
         $plgURL = $this->plgURL;
         require_once($this->plgDir . '/EzAdmin.php');
         $ez = new EzAdmin($plg, $slug, $plgURL);
@@ -124,7 +114,6 @@ else {
           $ez->killAuthor = true;
         }
         $this->ez = $ez;
-        $this->myPlugins = $myPlugins;
       }
     }
 

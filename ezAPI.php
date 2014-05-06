@@ -226,7 +226,7 @@ if (!class_exists("ezOption")) {
     function &addChoice($name, $value = '', $desc = '') {
       $subname = $this->name . '_' . $name;
       if (is_array($this->choices) && array_key_exists($subname, $this->choices)) {
-        die("Fatal Error [addChoice]: New Choice $subname already exists in " . $this->name);
+        die(sprintf(__("Fatal Error [%s]: New Choice %s already exists in %s", 'easy-ads'), 'addChoice', $subname, $this->name));
       }
       $this->choices[$subname] = new ezOption('choice', $subname);
       $this->choices[$subname]->value = $value;
@@ -317,16 +317,16 @@ if (!class_exists("ezOption")) {
       $price = $this->price;
       $moreInfo = "&nbsp; <a href='http://www.thulasidas.com/plugins/$name' title='More info about $value'>More Info</a>";
 
-      $liteVersion = " <a href='http://buy.thulasidas.com/lite/$name.zip' title='Download the Lite version of $value'>Get Lite Version</a> ";
-      $proVersion = " <a href='http://buy.thulasidas.com/$name' title='Buy the Pro version of $value for \$$price'>Get Pro Version</a><br />";
+      $liteVersion = " <a href='http://buy.thulasidas.com/lite/$name.zip' title='" . sprintf(__("Download the Lite version of %s", 'easy-ads'), $value) . "'>" . __("Get Lite Version", 'easy-ads') . "</a> ";
+      $proVersion = " <a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Buy the Pro version of %s for \$%s", 'easy-ads'), $value, $value) . "'>" . "Get Pro Version" . "</a><br />";
       $plugindir = get_option('siteurl') . '/' . PLUGINDIR . '/' . basename(dirname(__FILE__));
-      $why = addslashes("<a href='http://buy.thulasidas.com/$name' title='Buy the Pro version of the $name plugin'><img src='$plugindir/ezpaypal.png' border='0' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a><br />") .
+      $why = addslashes("<a href='http://buy.thulasidas.com/$name' title='" . sprintf(__("Pro version of the %s plugin", 'easy-ads'), $name) . "'><img src='$plugindir/ezpaypal.png' border='0' alt='ezPayPal -- Instant PayPal Shop.' class='alignright' /></a><br />") .
               $this->why;
       echo "<li>" . ezTab::makeTextWithTooltip($text, $this->title, $value, 350, false);
       if ($price >= 0) {
-        echo ezTab::makeTextWithTooltip($moreInfo, "Read more about $value at its own page.<br />" . $this->title, "More Information about $value", 300, false) .
-        ezTab::makeTextWithTooltip($liteVersion, $this->title, "Download $value - the Lite version", 300, false) .
-        ezTab::makeTextWithTooltip($proVersion, $why, "Get $value Pro!", 300, false);
+        echo ezTab::makeTextWithTooltip($moreInfo, sprintf(__("Read more about %s at its own page.", 'easy-ads'), $value) . "<br />" . $this->title, sprintf(__("More Information about %s", 'easy-ads'), $value), 300, false) .
+        ezTab::makeTextWithTooltip($liteVersion, $this->title, sprintf(__("Download %s - the Lite version", 'easy-ads'), $value), 300, false) .
+        ezTab::makeTextWithTooltip($proVersion, $why, sprintf(__("Get %s Pro!", 'easy-ads'), $value), 300, false);
       }
       echo "</li>\n";
       if (!empty($this->after)) {
@@ -443,7 +443,7 @@ if (!class_exists("ezOption")) {
     function &addTabOption($type, $key) {
       $subname = $this->name . '_' . $key;
       if (is_array($this->mTabOptions) && array_key_exists($subname, $this->mTabOptions)) {
-        die("Fatal Error [addTabOption]: New Option $subname already exists in " . $this->name);
+        die(sprintf(__("Fatal Error [%s]: New Option %s already exists in %s", 'easy-ads'), 'addTabOption', $subname, $this->name));
       }
       if (class_exists($type)) { // Specialized class for this type of input
         $this->mTabOptions[$key] = new $type($subname);
@@ -492,7 +492,7 @@ if (!class_exists("ezOption")) {
     function &addTab($name) {
       $subname = $this->name . '-' . $name;
       if (array_key_exists($subname, $this->mTabs)) {
-        die("Fatal Error [addTab]: New Tab $subname already exists in " . $this->name);
+        die(sprintf(__("Fatal Error [%s]: New Tab %s already exists in %s", 'easy-ads'), 'addTab', $subname, $this->name));
       }
       $this->mTabs[$subname] = new mTab($subname);
       return $this->mTabs[$subname];
@@ -667,18 +667,18 @@ if (!class_exists("ezTab")) {
 
     function defineSubmitButtons() { // Add submit buttons
       $button = &$this->addSubmitButton('submit', 'update');
-      $properties = array('value' => 'Save Changes',
-          'title' => "Save the changes as specified above.");
+      $properties = array('value' => __('Save Changes', 'easy-ads'),
+          'title' => __("Save the changes as specified above.", 'easy-ads'));
       $button->set($properties);
 
       $button = &$this->addSubmitButton('submit', 'reset');
-      $properties = array('value' => 'Reset Options',
-          'title' => 'DANGER: Reset all the options to default.');
+      $properties = array('value' => __('Reset Options', 'easy-ads'),
+          'title' => __('DANGER: Reset all the options to default.', 'easy-ads'));
       $button->set($properties);
 
       $button = &$this->addSubmitButton('submit', 'clean_db');
-      $properties = array('value' => 'Clean Database',
-          'title' => 'DANGER: Delete the options from the database.');
+      $properties = array('value' => __('Clean Database', 'easy-ads'),
+          'title' => __('DANGER: Delete the options from the database.', 'easy-ads'));
       $button->set($properties);
     }
 
@@ -693,12 +693,16 @@ if (!class_exists("ezTab")) {
                   $opt->updateValue();
                 }
                 update_option($this->optionName, $this->options);
-                $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
-                        ' Settings have been updated in the database.</strong></p> </div>';
+                $this->submitMessage .= '<div class="updated"><p><strong>' .
+                        $this->name . ' ' .
+                        __('Settings have been updated in the database.', 'easy-ads') .
+                        '</strong></p> </div>';
               }
               else {
-                $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
-                        ' No settings defined!</strong></p> </div>';
+                $this->submitMessage .= '<div class="updated"><p><strong>' .
+                        $this->name . ' ' .
+                        __('No settings defined!', 'easy-ads') .
+                        '</strong></p> </div>';
               }
               break;
             case "reset":
@@ -712,9 +716,12 @@ if (!class_exists("ezTab")) {
             case "clean_db":
               delete_option($this->optionName);
               unset($this->options);
-              $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
-                      ' Settings have been discarded, and the database is clean as a whistle!<br />' .
-                      'You may want to uninstall the plugin now.</strong></p> </div>';
+              $this->submitMessage .= '<div class="updated"><p><strong>' .
+                      $this->name . ' ' .
+                      __('Settings have been discarded, and the database is clean as a whistle!', 'easy-ads') .
+                      '<br />' .
+                      __('You may want to uninstall the plugin now.', 'easy-ads') .
+                      '</strong></p> </div>';
               break;
             default:
               $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
@@ -739,7 +746,7 @@ if (!class_exists("ezTab")) {
       if (!empty($this->options) &&
               is_array($this->options) &&
               array_key_exists($key, $this->options)) {
-        die("Fatal Error [addOption]: New Option $key already exists in " . $this->name);
+        die(sprintf(__("Fatal Error [%s]: New Option %s already exists in %s", 'easy-ads'), 'addOption', $key, $this->name));
       }
       if (class_exists($type)) { // Specialized class for this type of input
         $this->options[$key] = new $type($name);
@@ -755,7 +762,7 @@ if (!class_exists("ezTab")) {
       if (!empty($this->submitButtons) &&
               is_array($this->submitButtons) &&
               array_key_exists($name, $this->submitButtons)) {
-        die("Fatal Error [addSubmitButton]: New Button $name already exists in " . $this->submitButtons);
+        die(sprintf(__("Fatal Error [%s]: New Button %s already exists in %s", 'easy-ads'), 'addSubmitButton', $name, $this->submitButtons));
       }
       if (class_exists($type)) { // Specialized class for this type of input
         $this->submitButtons[$key] = new $type($name);
@@ -769,14 +776,13 @@ if (!class_exists("ezTab")) {
     // ------------ Content Filter -----------------
     function get($optionName) {// Return an option value
       if (!is_array($this->options)) {
-        echo ("Fatal Error: <code>get('$optionName')</code> in " .
-        $this->name . " Options don't exist (not an array)!");
+        echo (sprintf(__("Fatal Error: %s in %s. Options don't exist (not an array)!", 'easy-ads'), "<code>get('$optionName')</code>", $this->name));
       }
       if (!empty($this->options[$optionName])) {
         return $this->options[$optionName]->get();
       }
       else {
-      // look for the option in all the miniTabs
+        // look for the option in all the miniTabs
         foreach ($this->options as $o) {
           if ($o->type == 'miniTab') {
             foreach ($o->mTabs as $mTab) {
@@ -883,19 +889,18 @@ if (!class_exists("EzAdminTab")) {
       unset($this->submitButtons);
 
       $button = &$this->addSubmitButton('submit', 'update');
-      $properties = array('value' => 'Save Changes',
-          'title' => "Save the changes as specified above.");
+      $properties = array('value' => __('Save Changes', 'easy-ads'),
+          'title' => __("Save the changes as specified above.", 'easy-ads'));
       $button->set($properties);
 
       $button = &$this->addSubmitButton('submit', 'reset');
-      $properties = array('value' => 'Reset All Options',
-          'title' => 'DANGER: Reset all the options to default.');
+      $properties = array('value' => __('Reset All Options', 'easy-ads'),
+          'title' => __('DANGER: Reset all the options to default.', 'easy-ads'));
       $button->set($properties);
 
       $button = &$this->addSubmitButton('submit', 'migrate');
-      $properties = array('value' => 'Migrate Options',
-          'title' => 'Update the options to be compatible with ' .
-          'the current version of the plugin.');
+      $properties = array('value' => __('Migrate Options', 'easy-ads'),
+          'title' => __('Update the options to be compatible with the current version of the plugin.', 'easy-ads'));
       $button->set($properties);
 
       $button = &$this->addSubmitButton('submit', 'clean_db');
@@ -931,12 +936,16 @@ if (!class_exists("EzAdminTab")) {
                 $pluginVersion = $ezPlugin->getVersion();
                 $ezPlugin->genOptions['Version'] = $pluginVersion;
                 update_option($ezPlugin->genOptionName, $ezPlugin->genOptions);
-                $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
-                        ' Settings have been updated in the database.</strong></p> </div>';
+                $this->submitMessage .= '<div class="updated"><p><strong>' .
+                        $this->name . ' ' .
+                        __('Settings have been updated in the database.', 'easy-ads') .
+                        '</strong></p> </div>';
               }
               else {
-                $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
-                        ' No settings defined!</strong></p> </div>';
+                $this->submitMessage .= '<div class="updated"><p><strong>' .
+                        $this->name . ' ' .
+                        __('No settings defined!', 'easy-ads') .
+                        '</strong></p> </div>';
               }
               break;
             case "clean_db0":
@@ -948,8 +957,9 @@ if (!class_exists("EzAdminTab")) {
               $pluginVersion = $ezPlugin->getVersion();
               $ezPlugin->genOptions['Version'] = $pluginVersion;
               update_option($ezPlugin->genOptionName, $ezPlugin->genOptions);
-              $this->submitMessage .= '<div class="updated"><p><strong>All' .
-                      ' Settings have been reset to the defaults!</strong></p> </div>';
+              $this->submitMessage .= '<div class="updated"><p><strong>' .
+                      __('All Settings have been reset to the defaults!', 'easy-ads') .
+                      '</strong></p> </div>';
               break;
             case "migrate":
               foreach ($ezPlugin->tabs as $key => $p) {
@@ -958,8 +968,9 @@ if (!class_exists("EzAdminTab")) {
               $pluginVersion = $ezPlugin->getVersion();
               $ezPlugin->genOptions['Version'] = $pluginVersion;
               update_option($ezPlugin->genOptionName, $ezPlugin->genOptions);
-              $this->submitMessage .= '<div class="updated"><p><strong>All' .
-                      " Settings have been migrated to version $pluginVersion.</strong></p> </div>";
+              $this->submitMessage .= '<div class="updated"><p><strong>' .
+                      sprintf(__('All Settings have been migrated to version %s.', 'easy-ads'), $pluginVersion) .
+                      '</strong></p> </div>';
               break;
             case "clean_db":
               foreach ($ezPlugin->tabs as $key => $p) {
@@ -967,9 +978,12 @@ if (!class_exists("EzAdminTab")) {
                 unset($ezPlugin->tabs[$key]->options);
               }
               // delete_option(ezNS::$genOptionName) ;
-              $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
-                      ' Settings have been discarded, and the database is clean as a whistle!<br />' .
-                      'You may want to uninstall the plugin now.</strong></p> </div>';
+              $this->submitMessage .= '<div class="updated"><p><strong>' .
+                      $this->name . ' ' .
+                      __('Settings have been discarded, and the database is clean as a whistle!', 'easy-ads') .
+                      '<br />' .
+                      __('You may want to uninstall the plugin now.', 'easy-ads') .
+                      '</strong></p> </div>';
               break;
             default:
               $this->submitMessage .= '<div class="updated"><p><strong>' . $this->name .
@@ -1011,10 +1025,8 @@ if (!class_exists("ezAbout")) {
       echo $this->submitMessage;
       echo $this->errorMessage;
 
-      echo '<div style="background-color:#fcf;padding:5px;border: solid 1px">';
       $ez = $ezPlugin->ez;
       $ez->renderSupport();
-      echo '</div>';
 
       $myPluginsU = array_unique($ezPlugin->myPlugins, SORT_REGULAR);
       $keys = array_rand($myPluginsU, 4);
@@ -1045,29 +1057,26 @@ if (!class_exists("ezAbout")) {
       $properties = array('value' => 'Walter Zorn',
           'url' => 'http://sourceforge.net/projects/wztip/',
           'price' => -1,
-          'desc' => '<b>' . $name .
-          '</b> uses the excellent Javascript/DHTML tooltips by Walter Zorn.',
-          'title' => 'Javascript, DTML Tooltips - The tooltip you are looking at is based on the work of Walter Zorn.',
+          'desc' => sprintf(__('%s uses the excellent Javascript/DHTML tooltips by Walter Zorn.', 'easy-ads'), "<b>$name</b>"),
+          'title' => __('Javascript, DTML Tooltips - The tooltip you are looking at is based on the work of Walter Zorn.', 'easy-ads'),
           'before' => "</ul>\n</td>\n</tr>\n<tr><th scope='row'><b>Credits</b></th></tr>\n<tr><td>" .
           '<ul style="padding-left:10px;list-style-type:circle; list-style-position:inside;" >');
       $option->set($properties);
 
       $option = &$this->addOption('blurb', 'tabs');
-      $properties = array('value' => 'Web Developer Blog',
+      $properties = array('value' => __('Web Developer Blog', 'easy-ads'),
           'url' => 'http://webdevel.blogspot.com/2009/03/pure-accessible-javascript-tabs.html',
           'price' => -1,
-          'desc' => '<b>' . $name .
-          '</b> uses a modified version JavaScript tabs from Web Developer Blog.',
-          'title' => 'A simple but poweful, CSS based tab implementation.');
+          'desc' => sprintf(__('%s uses a modified version JavaScript tabs from Web Developer Blog.', 'easy-ads'), "<b>$name</b>"),
+          'title' => __('A simple but poweful, CSS based tab implementation.', 'easy-ads'));
       $option->set($properties);
 
       $option = &$this->addOption('blurb', 'colorpicker');
-      $properties = array('value' => 'jscolor, JavaScript Color Picker',
+      $properties = array('value' => __('jscolor, JavaScript Color Picker', 'easy-ads'),
           'url' => 'http://jscolor.com',
           'price' => -1,
-          'desc' => '<b>' . $name .
-          '</b> uses the JavaScript Color Picker kindly developed and distributed by Honza Odvarko.',
-          'title' => 'An excellent and widely popular color picker.');
+          'desc' => sprintf(__('%s uses the JavaScript Color Picker kindly developed and distributed by Honza Odvarko.', 'easy-ads'), "<b>$name</b>"),
+          'title' => __('An excellent and widely popular color picker.', 'easy-ads'));
       $option->set($properties);
 
       $this->blurbs = $this->options;
@@ -1205,15 +1214,13 @@ if (!class_exists("ezPlugin")) {
       $pluginVersion = $this->getVersion();
       $storedVersion = $this->genOptions['Version'];
       if ($storedVersion != $pluginVersion) {
-        echo '<div class="error" id="migrate">',
-        '<form id="genOptionMigrationForm" method="post" action="">',
-        '<p>Your saved options look out of date. Want to migrate the options to the current version? </p>';
-        echo '<p>Resetting all the options (and re-entering them) is highly recommended.</p>';
-        echo '<input type = "button" id = "migrateButton" value = "Migrate" onclick = "mButtonWhich(\'Migrate\')" />',
-        '<input type = "button" id = "resetButton" value = "Reset" onclick = "mButtonWhich(\'Reset\')" />',
-        '<input type="hidden" id="genOptionMigration" name="genOptionMigration" value="none" />',
-        '<input type="hidden" id="genOptionReset" name="genOptionReset" value="none" />',
-        '</form>',
+        echo '<div class="error" id="migrate"><form id="genOptionMigrationForm" method="post" action=""><p>' .
+        __('Your saved options look out of date. Want to migrate the options to the current version?', 'easy-ads') .
+        '</p><p>' .
+        __('Resetting all the options (and re-entering them) is highly recommended.', 'easy-ads') .
+        '</p><input type = "button" id = "migrateButton" value = "Migrate" onclick = "mButtonWhich(\'Migrate\')" /><input type = "button" id = "resetButton" value = "' .
+        __('Reset', 'easy-ads') .
+        '" onclick = "mButtonWhich(\'Reset\')" /><input type="hidden" id="genOptionMigration" name="genOptionMigration" value="none" /><input type="hidden" id="genOptionReset" name="genOptionReset" value="none" /></form>',
         '<script type = "text/javascript">',
         'function hideVersion() {',
         'document.getElementById("migrate").style.display = \'none\';',
@@ -1239,14 +1246,16 @@ if (!class_exists("ezPlugin")) {
         $pluginVersion = $this->getVersion();
         if ($action == "Migrate") {
           $submitMessage = '<div class="updated"><p><strong>' .
-                  $this->name .
-                  " Options migrated to $pluginVersion.</strong></p> </div>";
+                  $this->name . ' ' .
+                  sprintf(__("Options migrated to %s.", 'easy-ads'), $pluginVersion) .
+                  "</strong></p> </div>";
           $this->migrateOptions();
         }
         if ($action == "Reset") {
           $submitMessage = '<div class="updated"><p><strong>' .
-                  $this->name .
-                  " Options reset to $pluginVersion.</strong></p> </div>";
+                  $this->name . ' ' .
+                  sprintf(__("Options reset to %s.", 'easy-ads'), $pluginVersion) .
+                  "</strong></p> </div>";
           $this->resetOptions();
         }
         $this->genOptions['Version'] = $pluginVersion;
@@ -1269,7 +1278,6 @@ if (!class_exists("ezPlugin")) {
 
       echo "<h2>", $this->name, " Setup</h2><br />";
 
-      $haveExtras = file_exists($this->CWD . '/ezExtras.php');
       ezNS::setStaticVars($this->defaults);
 
       foreach ($this->tabs as $k => $p) {
@@ -1312,14 +1320,9 @@ if (!class_exists("ezPlugin")) {
     }
 
     function filterContent($content) {
-      if (class_exists('ezExtras')) {
-        $score = ezExtras::getGScore($content);
-        return "<b>ezAPI:</b> Filtered this post. (Score = $score.)<br />\n" . $content;
-      }
-      return "<b>ezAPI:</b> Filtered this post. (Trivial Filtering.)<br />\n" . $content;
+      return "<b>ezAPI:</b> " . "Filtered this post." . " (Trivial Filtering.)<br />\n" . $content;
     }
 
   }
 
-  //End: Class ezPlugin
-}
+} //End: Class ezPlugin
