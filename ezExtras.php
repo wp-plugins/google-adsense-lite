@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Copyright (C) 2010 www.thulasidas.com
+  Copyright (C) 2008 www.ads-ez.com
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  */
 
 if (!class_exists("ezExtras")) {
-define('EZSIZE', '300x250');
+  define('EZSIZE', '300x250');
 
   class ezExtras { // static functions
 
@@ -37,7 +37,7 @@ define('EZSIZE', '300x250');
         $w = substr($key, 0, $x) - 20;
         $h = substr($key, $x + 1) - 20;
         $p = (int) (min($w, $h) / 6);
-        $ret = '<div style="width:' . $w . 'px;height:' . $h . 'px;border:1px solid red;margin:10px;"><div style="padding:' . $p . 'px;text-align:center;font-family:arial;font-size:8pt;"><p>' . sprintf(__('Your ads will be inserted here by %s' . ezNS::$name, 'easy-ads'), '</p><p><b>' . ezNS::$name) . '</b>.</p><p>Please go to the plugin admin page to set up your ad code.</p></div></div>';
+        $ret = '<div style="width:' . $w . 'px;height:' . $h . 'px;border:1px solid red;margin:10px;"><div style="padding:' . $p . 'px;text-align:center;font-family:arial;font-size:8pt;"><p>' . sprintf(__('Your ads will be inserted here by %s', 'easy-ads'), '</p><p><b>' . ezNS::$name. '</b>.</p><p>')  . __('Please go to the plugin admin page to set up your ad code.', 'easy-ads') . '</p></div></div>';
       }
       return $ret;
     }

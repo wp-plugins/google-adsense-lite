@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 3.9
-Stable tag: 2.10
+Stable tag: 2.11
 License: GPL2 or later
 
 Google AdSense showcases Google ads on your blog, with full customization.
@@ -36,7 +36,7 @@ The Pro version costs $5.95 and can be [purchased online](http://buy.thulasidas.
 
 == Upgrade Notice ==
 
-Internationalization and compatibility with WP3.9.
+Minor bug fix.
 
 == Screenshots ==
 
@@ -78,6 +78,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V2.11: Minor bug fix. [May 8, 2014]
 * V2.10: Internationalization and compatibility with WP3.9. [May 7, 2014]
 * V2.00: Major changes to the design -- adding a translation interface, getting ready to change options handling. [Mar 22, 2014]
 * V1.81: Adding options to suppress ads on sticky front page or search pages. [Jan 5, 2013]
