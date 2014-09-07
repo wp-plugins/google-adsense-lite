@@ -3,7 +3,7 @@
 /*
   Plugin Name: Google AdSense
   Plugin URI: http://www.thulasidas.com/adsense
-  Version: 2.12
+  Version: 2.20
   Description: <em>Lite Version</em>: Make more money from your blog using <a href="http://adsense.google.com" target="_blank">Google AdSense</a>). Configure it at <a href="options-general.php?page=google-adsense-lite.php">Settings &rarr; Google AdSense</a>.
   Author: Manoj Thulasidas
   Author URI: http://www.thulasidas.com
