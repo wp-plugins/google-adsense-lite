@@ -3,7 +3,7 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 2.20
 License: GPL2 or later
 

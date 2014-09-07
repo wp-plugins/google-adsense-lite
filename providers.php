@@ -376,7 +376,7 @@ if (!class_exists("provider")) {
 
     function renderContent() {
       $name = $this->name;
-      echo '<h3>' . sprintf(__('Options for %s " . "easy-ads'), $name) . "</h3>\n";
+      echo '<h3>' . sprintf(__('Options for %s ', 'easy-ads'), $name) . "</h3>\n";
     }
 
     // ------------ Widget handling ----------------
