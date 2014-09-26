@@ -4,16 +4,16 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.0
-Stable tag: 2.22
+Stable tag: 2.30
 License: GPL2 or later
 
 Google AdSense showcases Google ads on your blog, with full customization.
 
 == Description ==
 
-*Google AdSense* provides a streamlined interface to deploy Google ads on your blog. You can customize the colors and sizes of the ad blocks and activate them right from the plugin interface.
+Google AdSense provides a streamlined interface to deploy Google ads on your blog. You can customize the colors and sizes of the ad blocks and activate them right from the plugin interface.
 
-*Google AdSense* is a specialized version of [Easy Ads](http://buy.thulasidas.com/easy-ads/ "Manage multiple ad providers on your blog"), which lets you manage multiple ad providers in a neat, tabbed interface. It may be more appropriate than *Google AdSense* if you plan to use more than one ad provider.
+Google AdSense is a specialized version of [Easy Ads](http://buy.thulasidas.com/easy-ads/ "Manage multiple ad providers on your blog"), which lets you manage multiple ad providers in a neat, tabbed interface. It may be more appropriate than Google AdSense if you plan to use more than one ad provider.
 
 = Features =
 1. Tabbed and intuitive interface.
@@ -26,7 +26,7 @@ Google AdSense showcases Google ads on your blog, with full customization.
 
 = Pro Version =
 
-*Google AdSense* is the freely distributed version of a premium plugin. The [Pro version](http://buy.thulasidas.com/google-adsense "Pro version of the Google AdSense plugin for $5.95") gives you even more features.
+Google AdSense is the freely distributed version of a premium plugin. The [Pro version](http://buy.thulasidas.com/google-adsense "Pro version of the Google AdSense plugin for $5.95") gives you even more features.
 
 1. A filter to ensure that your ads show only on those pages that seem to comply with Google AdSense (and other common provider) policies, which can be important since some comments may render your pages inconsistent with those policies.
 2. It also lets you specify a list of computers where your ads will not be shown, in order to prevent accidental clicks on your own ads -- one of the main reasons AdSense bans you.
@@ -36,12 +36,12 @@ The Pro version costs $5.95 and can be [purchased online](http://buy.thulasidas.
 
 == Upgrade Notice ==
 
-Minor change to the admin interface.
+Automatic options migration upon plugin activation.
 
 == Screenshots ==
 
-1. *Google AdSense* "Overview" tab.
-2. How to set the options for *Google AdSense*.
+1. Google AdSense "Overview" tab.
+2. How to set the options for Google AdSense.
 
 == Installation ==
 
@@ -50,25 +50,25 @@ The easiest way to install this plugin is to use the WordPress Admin interface. 
 If you want to download it and manually install, you can again use the WordPress dashboard interface. First download the plugin zip file to your local computer. Then go to your admin dashboard, find the "Plugins" menu, and click on "Add New". After clicking on the "Add New" menu item as above, click on "Upload" (below the title "Install Plugins" near the top). Browse for your downloaded zip file, upload it and activate the plugin.
 
 If you want to manually upload it using your ftp program, unzip the downloaded zip file and,
-1. Upload the *Google AdSense* plugin (the whole folder) to the '/wp-content/plugins/' directory.
+1. Upload the Google AdSense plugin (the whole folder) to the '/wp-content/plugins/' directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to the Settings -> *Google AdSense* and enter your user ID and options.
+3. Go to the Settings -> Google AdSense and enter your user ID and options.
 
 == Frequently Asked Questions ==
 
 = How can I control the appearance of the ad blocks using CSS? =
 
-All `<div>`s that *Google AdSense* creates have the class attribute `google-adsense`. Furthermore, they have class attributes like `google-adsense-top`, `google-adsense-bottom` etc., You can set the style for these classes in your theme `style.css` to control their appearance.
+All `<div>`s that Google AdSense creates have the class attribute `google-adsense`. Furthermore, they have class attributes like `google-adsense-top`, `google-adsense-bottom` etc., You can set the style for these classes in your theme `style.css` to control their appearance.
 
 = Why does my code disappear when I switch to a new theme? =
 
-*Google AdSense* stores the ad code and options in your database indexed by the theme name, so that if you set up the options for a particular theme, they persist even when you switch to another theme. If you ever switch back to an old theme, all your options will be reused without your worrying about it.
+Google AdSense stores the ad code and options in your database indexed by the theme name, so that if you set up the options for a particular theme, they persist even when you switch to another theme. If you ever switch back to an old theme, all your options will be reused without your worrying about it.
 
 But this unfortunately means that you do have to set the code *once* whenever you switch to a new theme.
 
 = Can I control how the ad blocks are formatted in each page? =
 
-Yes! In *Google AdSense*, you have more options [through **custom fields**] to control ad blocks in individual posts/pages. Add custom fields with keys like **google-adsense-top, google-adsense-middle, google-adsense-bottom** and with values like **left, right, center** or **no** to have control how the ad blocks show up in each post or page. The value "**no**" suppresses all the ad blocks in the post or page for that provider.
+Yes! In Google AdSense, you have more options [through **custom fields**] to control ad blocks in individual posts/pages. Add custom fields with keys like **google-adsense-top, google-adsense-middle, google-adsense-bottom** and with values like **left, right, center** or **no** to have control how the ad blocks show up in each post or page. The value "**no**" suppresses all the ad blocks in the post or page for that provider.
 
 = How do I report a bug or ask a question? =
 
@@ -78,6 +78,7 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 == Change Log ==
 
+* V2.30: Automatic options migration upon plugin activation. [Sep 26, 2014]
 * V2.22: Minor change to the admin interface. [Sep 9, 2011]
 * V2.21: Compatibility with WP4.0. [Sep 8, 2014]
 * V2.20: Compatibility with WP4.0. [Sep 7, 2014]

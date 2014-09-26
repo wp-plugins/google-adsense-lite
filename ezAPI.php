@@ -1201,6 +1201,9 @@ if (!class_exists("ezPlugin")) {
       foreach ($this->tabs as $key => $p) {
         $p->migrateOptions();
       }
+      $pluginVersion = $this->getVersion();
+      $this->genOptions['Version'] = $pluginVersion;
+      update_option($this->genOptionName, $this->genOptions);
     }
 
     function resetOptions() {
@@ -1215,9 +1218,9 @@ if (!class_exists("ezPlugin")) {
       $storedVersion = $this->genOptions['Version'];
       if ($storedVersion != $pluginVersion) {
         echo '<div class="error" id="migrate"><form id="genOptionMigrationForm" method="post" action=""><p>' .
-        __('Your saved options look out of date. Want to migrate the options to the current version?', 'easy-ads') .
+        sprintf(__('Your saved options (%s) look out of date. Want to migrate the options to the current version (%s)?', 'easy-ads'), $storedVersion, $pluginVersion) .
         '</p><p>' .
-        __('Resetting all the options (and re-entering them) is highly recommended.', 'easy-ads') .
+        __('Resetting all the options (and re-entering them) is recommended.', 'easy-ads') .
         '</p><input type = "button" id = "migrateButton" value = "Migrate" onclick = "mButtonWhich(\'Migrate\')" /><input type = "button" id = "resetButton" value = "' .
         __('Reset', 'easy-ads') .
         '" onclick = "mButtonWhich(\'Reset\')" /><input type="hidden" id="genOptionMigration" name="genOptionMigration" value="none" /><input type="hidden" id="genOptionReset" name="genOptionReset" value="none" /></form>',
