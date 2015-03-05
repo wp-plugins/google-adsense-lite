@@ -1,6 +1,6 @@
 <?php
 
-require_once('../EzGA.php');
+require('../EzGA.php');
 
 if (EzGA::isLoggedIn()) {
   if (!EzGA::isActive()) {

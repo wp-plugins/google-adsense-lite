@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.1
-Stable tag: 3.00
+Stable tag: 3.01
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -13,7 +13,7 @@ Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customiza
 
 Ads EZ Plugin for Google AdSense provides a streamlined interface to deploy Google ads on your blog. You can customize the colors, sizes and placement of the ad blocks and activate them right from the plugin interface.The admin interface uses a highly functional and modern interface based on the twitter bootstrap framework with generous, context-sensitive help on every single option.
 
-Ads EZ Plugin for Google AdSense is a specialized version of [Google AdSense Ultra](http://buy.thulasidas.com/google-adsense/ "Most versatile AdSense plugin for your blog"), which lets you manage in basic, standard and expert modes, all in a beautifully designed modern interface.
+Ads EZ Plugin for Google AdSense is a specialized version of [Google AdSense Ultra](http://buy.thulasidas.com/google-adsense "Most versatile AdSense plugin for your blog"), which lets you manage in basic, standard and expert modes, all in a beautifully designed modern interface.
 
 = Features =
 1. Tabbed and intuitive interface.
@@ -43,11 +43,11 @@ Ads EZ Plugin for Google AdSense is the freely distributed version of a premium 
 11. Ad Serving Statistics: Keep an eye on your ad serving statistics to make sure that Google is not shortchanging you. (Optional paid module)
 12. Basic/Expert Modes: You can choose to operate it in basic or expert modes in addition to the standard mode.
 
-The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasidas.com/google-adsense/ "Pro version of the Ads EZ Plugin for Google AdSense plugin for $9.45") with instant download link.
+The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasidas.com/google-adsense "Pro version of the Ads EZ Plugin for Google AdSense plugin for $9.45") with instant download link.
 
 == Upgrade Notice ==
 
-Complete rewrite of the plugin with a lot more features. Admin page based on the twitter bootstrap framework.
+Modifications to the update module. Minor code clean up.
 
 == Screenshots ==
 
@@ -92,6 +92,7 @@ You can download the [previous version](https://downloads.wordpress.org/plugin/g
 
 == Change Log ==
 
+* V3.01: Modifications to the update module. Minor code clean up. [Mar 5, 2015]
 * V3.00: Complete rewrite of the plugin with a lot more features. Admin page based on the twitter bootstrap framework. [Mar 3, 2015]
 * V2.50: Compatibility with WP4.1. [Jan 8, 2015]
 * V2.40: Renaming the plugin as requested by Google. [Nov 30, 2014]

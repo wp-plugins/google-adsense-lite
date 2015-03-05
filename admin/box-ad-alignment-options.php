@@ -1,5 +1,5 @@
 <?php
-if ($options['plugin_slug'] == 'google-adsense') {
+if (EzGA::getSlug() == 'google-adsense') {
   $top = 'show_top';
   $middle = 'show_middle';
   $bottom = 'show_bottom';

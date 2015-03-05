@@ -111,30 +111,37 @@ class GgAdSenseFront {
       }
     }
 
+    list($content, $return) = EzGA::filterShortCode($content);
+    if ($return) {
+      return $content;
+    }
+
     $metaOptions = EzGA::getMetaOptions();
     $show_leadin = $metaOptions['show_top'];
     $leadin = '';
-    if ($show_leadin != 'no' && empty($this->options['header_leadin'])) {
+    if ($show_leadin != 'no') {
       if (self::$ezCount < self::$ezMax && $adCount++ < $adMax) {
         $leadin = $this->mkAdBlock("top", $this->options['format']);
       }
     }
 
     $show_midtext = $metaOptions['show_middle'];
+    $midtext = '';
     if ($show_midtext != 'no') {
       if (self::$ezCount < self::$ezMax && $adCount++ < $adMax) {
-        $paras = EzGA::findParas($content);
-
-        $half = sizeof($paras);
-        while (sizeof($paras) > $half) {
-          array_pop($paras);
-        }
-        $split = 0;
-        if (!empty($paras)) {
-          $split = $paras[floor(sizeof($paras) / 2)];
-        }
         $midtext = $this->mkAdBlock("middle", $this->options['format']);
-        $content = substr($content, 0, $split) . $midtext . substr($content, $split);
+        if (!EzGA::$foundShortCode) {
+          $paras = EzGA::findParas($content);
+          $half = sizeof($paras);
+          while (sizeof($paras) > $half) {
+            array_pop($paras);
+          }
+          $split = 0;
+          if (!empty($paras)) {
+            $split = $paras[floor(sizeof($paras) / 2)];
+          }
+          $content = substr($content, 0, $split) . $midtext . substr($content, $split);
+        }
       }
     }
 
@@ -142,13 +149,15 @@ class GgAdSenseFront {
     $leadout = '';
     if ($show_leadout != 'no') {
       if (self::$ezCount < self::$ezMax && $adCount++ < $adMax) {
-        $paras = EzGA::findParas($content);
-        $split = array_pop($paras);
-        if (!empty($split)) {
-          $content1 = substr($content, 0, $split);
-          $content2 = substr($content, $split);
-        }
         $leadout = $this->mkAdBlock("bottom", $this->options['format']);
+        if (!EzGA::$foundShortCode && strpos($show_leadout, "float") !== false) {
+          $paras = EzGA::findParas($content);
+          $split = array_pop($paras);
+          if (!empty($split)) {
+            $content1 = substr($content, 0, $split);
+            $content2 = substr($content, $split);
+          }
+        }
       }
     }
     if (EzGA::$foundShortCode) {
@@ -173,7 +182,7 @@ if (!empty($ggAdSenseFront)) {
   require_once 'google-adsense-widget.php';
   EzWidget::setPlugin($ggAdSenseFront);
   if (EzGA::isPro()) {
-    if (!empty(EzGA::$options['enable_shortcode'])) {
+    if (!empty(EzGA::$options['enableShortCode'])) {
       $shortCodes = array('ezadsense', 'adsense');
       foreach ($shortCodes as $sc) {
         add_shortcode($sc, array('EzGA', 'processShortcode'));

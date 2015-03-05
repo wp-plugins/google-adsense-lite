@@ -35,11 +35,7 @@
 <script src="js/bootstrap-colorpicker.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-editable.min.js"></script>
-<script src="js/bootstrap.lightbox.js"></script>
 <script src="js/bootstrap-tour.min.js"></script>
-<script src="js/bootstrapValidator.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.js"></script>
 <script src="js/fileinput.min.js"></script>
 <script src="js/bootbox.min.js"></script>
 <!-- application script for Charisma demo -->

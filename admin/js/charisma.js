@@ -230,8 +230,6 @@ function docReady() {
   });
   $('.xedit-checkbox-new').editable('option', 'url', 'ajax/success.php');
 
-  $('.data-table').dataTable({"aaSorting": []});
-
   $('.colorpicker').colorpicker();
 
 //Add Hover effect to menus

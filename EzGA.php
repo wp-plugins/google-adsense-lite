@@ -315,11 +315,10 @@ if (!class_exists("EzGA")) {
       foreach ($rows as $row) {
         $options[$row->name] = $row->value;
       }
-      $options = array_merge($allOptions, $options);
+      self::$options = $options = array_merge($allOptions, $options);
       require "admin/$plugin_slug-options.php";
       $defaults = EzGA::getDefaults($ezOptions);
-      $options = array_merge($defaults, $options);
-      self::$options = $options;
+      self::$options = $options = array_merge($defaults, $options);
       return $options;
     }
 
@@ -845,7 +844,7 @@ if (!class_exists("EzGA")) {
       else if ($area < 728 * 90) {
         $line3 = "";
       }
-      if ($area == 300*250) { // default ads
+      if ($area == 300 * 250) { // default ads
         $line4 = "<br><br><b>This red box is shown only when logged on as Admin</b>";
       }
       else {

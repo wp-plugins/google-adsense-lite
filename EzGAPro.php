@@ -31,6 +31,10 @@ if (!class_exists('EzGAPro')) {
 
     }
 
+    static function filterShortCode($content) {
+      return array($content, false);
+    }
+
     static function handleShortCode($content) {
       return $content;
     }
