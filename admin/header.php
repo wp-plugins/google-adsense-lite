@@ -107,8 +107,8 @@ function getHeader() {
   $plgModeName = EzGA::$pluginModes[$plgSlug];
   $isPro = EzGA::$isPro;
   $plgPrice = EzGA::$plgPrice;
-  if (!empty($options['eztheme'])) {
-    $themeCSS = "css/bootstrap-" . strtolower($options['eztheme']) . ".min.css";
+  if (!empty(EzGA::$options['eztheme'])) {
+    $themeCSS = "css/bootstrap-" . strtolower(EzGA::$options['eztheme']) . ".min.css";
   }
   else {
     $themeCSS = "css/bootstrap-cerulean.min.css";
@@ -126,7 +126,6 @@ function getHeader() {
       <!-- The styles -->
       <link id="bs-css" href="<?php echo $themeCSS; ?>" rel="stylesheet">
       <link href="css/bootstrap-editable.css" rel="stylesheet">
-      <link href="css/bootstrap.lightbox.css" rel="stylesheet" media="screen">
       <link href="css/charisma-app.css" rel="stylesheet">
       <link href='css/bootstrap-tour.min.css' rel='stylesheet'>
       <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -136,7 +135,7 @@ function getHeader() {
       <style type="text/css">
         .popover{width:600px;}
         <?php
-        if (empty($options['breadcrumbs'])) {
+        if (empty(EzGA::$options['breadcrumbs'])) {
           ?>
           .breadcrumb {display:none;}
           <?php
@@ -256,7 +255,7 @@ EOF;
             $header = ob_get_clean();
             return $header;
           }
-          
+
           EzGA::verifyOptionSets();
           if (!empty($_REQUEST['optionset'])) {
             $optionset = $_REQUEST['optionset'];

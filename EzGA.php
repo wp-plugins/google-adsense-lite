@@ -37,6 +37,7 @@ if (!class_exists("EzGA")) {
     }
 
     static function isLoggedIn() {
+      global $wpdb;
       $isLoggedIn = false;
       $wpHeader = '../../../../wp-blog-header.php';
       if (file_exists($wpHeader)) { // admin?
@@ -416,7 +417,7 @@ if (!class_exists("EzGA")) {
       switch ($type) {
         case 'textarea':
           $value = self::renderOptionValue($pk, $option);
-          $cell = "<div $helpAttr class='form-group ez-wide'><label>$name</label><span class='form-control' style='display:inline-block;height:120px'>$value</span></div>";
+          $cell = "<div $helpAttr class='form-group ez-wide'><label>$name</label><span class='form-control' style='display:inline-block;height:120px;overflow-y:scroll'>$value</span></div>";
           break;
         case 'colorpicker': // render as a <div> with a colorpicker
           $value = self::renderOptionValue($pk, $option);

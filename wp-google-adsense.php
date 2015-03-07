@@ -2,6 +2,7 @@
 
 $ezFamily = array("google-adsense/google-adsense.php",
     "google-adsense-lite/google-adsense.php",
+    "google-adsense-pro/google-adsense.php",
     "easy-adsense/easy-adsense.php",
     "easy-adsense-pro/easy-adsense.php",
     "easy-adsense-lite/easy-adsense.php",
