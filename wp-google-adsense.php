@@ -1,41 +1,5 @@
 <?php
 
-$ezFamily = array("google-adsense/google-adsense.php",
-    "google-adsense-lite/google-adsense.php",
-    "google-adsense-pro/google-adsense.php",
-    "easy-adsense/easy-adsense.php",
-    "easy-adsense-pro/easy-adsense.php",
-    "easy-adsense-lite/easy-adsense.php",
-    "easy-adsense-lite/easy-adsense-lite.php",
-    "adsense-now/adsense-now.php",
-    "adsense-now-pro/adsense-now.php",
-    "adsense-now-lite/adsense-now.php",
-    "adsense-now-lite/adsense-now-lite.php");
-if (!function_exists('is_plugin_active')) {
-  include_once ABSPATH . 'wp-admin/includes/plugin.php';
-}
-if (!function_exists("ezDenyFamily")) {
-
-  function ezDenyFamily($lite) {
-    if (is_plugin_active($lite)) {
-      add_action('init', function() {
-        include_once ABSPATH . 'wp-admin/includes/plugin.php';
-        deactivate_plugins($_REQUEST['plugin']);
-      });
-      $litePlg = ABSPATH . PLUGINDIR . "/" . $lite;
-      $liteData = get_plugin_data($litePlg);
-      $plg = $liteData['Name'];
-      printf("<div class='error'>" . __("%s: Another plugin of the same family is active.<br />Please deactivate it before activating %s.", "easy-common") . "</div>", "<strong><em>$plg</em></strong>", "<strong><em>$plg</em></strong>");
-      add_action('admin_footer-plugins.php', function() {
-        $litePlg = ABSPATH . PLUGINDIR . "/" . $_REQUEST['plugin'];
-        $liteData = get_plugin_data($litePlg);
-        printf('<script>document.getElementById("message").innerHTML="' . "<span style='font-weight:bold;font-size:1.1em;color:red'>" . $liteData['Name'] . ": " . __("Cannot be activated!", "easy-common") . "</span>" . '";</script>');
-      });
-    }
-  }
-
-}
-
 if (is_admin()) {
   if (!class_exists("GoogleAdSense")) {
     require_once 'EZWP.php';
@@ -136,19 +100,24 @@ if (is_admin()) {
 
     //End Class GoogleAdSense
   }
-  else if (!empty($_REQUEST['plugin'])) {
-    $lite = $plg = "";
-    foreach ($ezFamily as $lite) {
-      ezDenyFamily($lite);
-    }
-  }
   else {
+    $ezFamily = array("google-adsense/google-adsense.php",
+        "google-adsense-lite/google-adsense.php",
+        "google-adsense-pro/google-adsense.php",
+        "easy-adsense/easy-adsense.php",
+        "easy-adsense-pro/easy-adsense.php",
+        "easy-adsense-lite/easy-adsense.php",
+        "easy-adsense-lite/easy-adsense-lite.php",
+        "adsense-now/adsense-now.php",
+        "adsense-now-pro/adsense-now.php",
+        "adsense-now-lite/adsense-now.php",
+        "adsense-now-lite/adsense-now-lite.php");
     $ezActive = array();
     foreach ($ezFamily as $lite) {
-      if (is_plugin_active($lite)) {
-        $litePlg = ABSPATH . PLUGINDIR . "/" . $lite;
-        $liteData = get_plugin_data($litePlg);
-        $ezActive[$lite] = $liteData['Name'];
+      $ezKillLite = new EzKillLite($lite);
+      $liteName = $ezKillLite->deny();
+      if (!empty($liteName)) {
+        $ezActive[$lite] = $liteName;
       }
     }
     if (count($ezActive) > 1) {
@@ -157,7 +126,8 @@ if (is_admin()) {
         $ezAdminNotice .= "<li><code>$k</code>: <b>{$p}</b></li>\n";
       }
       $ezAdminNotice .= "</ul>";
-      add_action('admin_notices', create_function('', 'echo \'<div class="error"><p><b><em>Ads EZ Family of Plugins</em></b>: Please have only one of these plugins active.</p>' . $ezAdminNotice . 'Otherwise they will interfere with each other and work as the last one.</div>\';'));
+      EzKillLite::$adminNotice .= '<div class="error"><p><b><em>Ads EZ Family of Plugins</em></b>: Please have only one of these plugins active.</p>' . $ezAdminNotice . 'Otherwise they will interfere with each other and work as the last one.</div>';
+      add_action('admin_notices', array('EzKillLite', 'admin_notices'));
     }
   }
 
