@@ -15,7 +15,6 @@ if (!class_exists("EzGA")) {
 
   class EzGA extends EZWP {
 
-//    static $options = array();
     static $metaOptions = array();
     static $plgPrice = array('easy-adsense' => 7.95,
         'adsense-now' => 6.95,
@@ -37,20 +36,20 @@ if (!class_exists("EzGA")) {
     }
 
     static function isLoggedIn() {
+      define('WP_USE_THEMES', false);
+      define('WP_INSTALLING', true);
       global $wpdb;
       $isLoggedIn = false;
-      $wpHeader = '../../../../wp-blog-header.php';
-      if (file_exists($wpHeader)) { // admin?
-        require($wpHeader);
-      }
-      else {
-        $wpHeader = '../../../../../wp-blog-header.php';
-        if (file_exists($wpHeader)) { // AJAX?
-          require($wpHeader);
+      // check from admin and ajax
+      foreach (array("../../../..", "../../../../..") as $dir) {
+        $wpHeader = "$dir/wp-blog-header.php";
+        if (@file_exists($wpHeader)) {
+          require_once $wpHeader;
+          break;
         }
       }
-      if (function_exists('is_user_logged_in')) {
-        if (is_user_logged_in()) {
+      if (function_exists('current_user_can')) {
+        if (current_user_can('manage_options')) {
           $isLoggedIn = true;
         }
       }
@@ -193,7 +192,7 @@ if (!class_exists("EzGA")) {
         }
       }
       $status = $wpdb->replace($table, $row);
-      if (!$status) {
+      if ($status === false) {
         http_response_code(400);
         die("Database Replace/Insert Error");
       }
@@ -760,7 +759,7 @@ if (!class_exists("EzGA")) {
 
     static function preFilter($content, $isWidget = false) {
       $plgName = self::getPlgName();
-      if (EzGA::$noAds) {
+      if (self::$noAds) {
         return $content . " <!-- $plgName: PreFiltered - NoAds -->";
       }
       if (self::isKilled()) {

@@ -1,5 +1,7 @@
 <?php
 
+include('ezKillLite.php');
+
 if (is_admin()) {
   if (!class_exists("GoogleAdSense")) {
     require_once 'EZWP.php';
@@ -7,7 +9,7 @@ if (is_admin()) {
     class GoogleAdSense {
 
       var $isPro, $plgName, $plgDir, $plgURL, $options;
-      var $ezTran, $ezAdmin, $slug, $domain, $myPlugins;
+      var $ezTran, $slug, $domain;
 
       function GoogleAdSense() { //constructor
         $this->plgDir = dirname(__FILE__);

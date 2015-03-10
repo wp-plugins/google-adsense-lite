@@ -30,22 +30,19 @@ abstract class EzWidget extends WP_Widget {
   abstract function decorate($adText);
 
   function widget($args, $instance) {
-    $before_widget = $before_title = $after_title = $after_widget = '';
-    extract($args);
-    $title = $this->getTitle();
-    if (empty($title)) {
-      $title = apply_filters('widget_title', $instance['title']);
-    }
-    echo $before_widget;
-    echo $before_title . $title . $after_title;
     $adText = $this->getAdText();
-    if (empty($adText)) {
-      echo sprintf(__("Empty Widget Text from %s", 'easy-ads'), "<code>" . $this->widgetName . "</code>");
-    }
-    else {
+    if (!empty($adText)) {
+      $before_widget = $before_title = $after_title = $after_widget = '';
+      extract($args);
+      $title = $this->getTitle();
+      if (empty($title)) {
+        $title = apply_filters('widget_title', $instance['title']);
+      }
+      echo $before_widget;
+      echo $before_title . $title . $after_title;
       echo $this->decorate($adText);
+      echo $after_widget;
     }
-    echo $after_widget;
   }
 
   function update($new_instance, $old_instance) {
@@ -64,4 +61,5 @@ abstract class EzWidget extends WP_Widget {
   static function setPlugin(&$plg) {
     self::$plg = $plg;
   }
+
 }

@@ -41,6 +41,14 @@ class Migrator {
     return $ret;
   }
 
+  static function ltrim($p) {
+    return ltrim($p, '-');
+  }
+
+  static function add_($p) {
+    return $p . "_";
+  }
+
   function decodeEzAPIOption($o) {
     $oName = $o['option_name'];
     $plugins = array('ezAPI--' => 'unknown',
@@ -52,12 +60,8 @@ class Migrator {
         'ezAPI-Google-Adsense-' => 'google-adsense',
         'ezAPI-Google-Adsense-Lite-' => 'google-adsense');
     $tabs = array("-AdSense", "-BidVertiser", "-Chitika", "-Clicksor", "-Admin");
-    $providers = array_map(function($p) {
-      return ltrim($p, '-');
-    }, $tabs);
-    $prefixes = array_map(function($p) {
-      return $p . "_";
-    }, $providers);
+    $providers = array_map(array('Migrator', 'ltrim'), $tabs);
+    $prefixes = array_map(array('Migrator', 'add_'), $providers);
     $search = array_merge(array_keys($plugins), $tabs);
     $theme = str_ireplace($search, "", $oName);
     // $plugins = str_ireplace($tabs, "", $plugins);

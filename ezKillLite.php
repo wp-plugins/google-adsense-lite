@@ -28,6 +28,7 @@ if (!class_exists('EzKillLite')) {
     var $lite, $pro, $killer;
     var $liteName, $proName;
     static $adminNotice = '';
+    static $killed = false;
 
     function __construct($lite, $pro = '', $killer = '') {
       $this->lite = $lite;
@@ -75,10 +76,14 @@ if (!class_exists('EzKillLite')) {
         add_action('admin_footer-plugins.php', array($this, 'admin_footer_kill'));
         $killed = true;
       }
+      self::$killed = $killed;
       return $killed;
     }
 
     function deny() {
+      if (self::$killed) {
+        return;
+      }
       $this->liteName = '';
       if (is_plugin_active($this->lite)) {
         $litePlg = ABSPATH . PLUGINDIR . "/" . $this->lite;
