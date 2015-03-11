@@ -1,6 +1,6 @@
 <?php
 $ezOptions['kill_feed'] = array('name' => __("RSS feeds", 'easy-ads'),
-    'help' => __("Suppress ads on RSS feeds from your blog?", 'easy-ads'),
+    'help' => __("Suppress ads on RSS feeds from your blog? This option may not work because the flag indicating that the content is an RSS feed may not be ready when the plugin checks for it. Use the <strong>Pro</strong> option <strong>Allow ad blocks in feeds?</strong> if your feeds do not validate.", 'easy-ads'),
     'value' => 1,
     'type' => 'checkbox2');
 $ezOptions['kill_page'] = array('name' => '<a href="http://codex.wordpress.org/Pages" target="_blank">' . __('Static Pages', 'easy-ads') . '</a>',

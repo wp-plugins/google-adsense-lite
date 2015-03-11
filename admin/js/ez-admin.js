@@ -61,7 +61,8 @@ $(document).ready(function () {
                 },
                 error: function (a) {
                   flashError(a.responseText);
-                }});
+                }}
+              );
             }
           });
         },
@@ -70,4 +71,46 @@ $(document).ready(function () {
         }});
     });
   });
+  suspendAds('status');
 });
+function suspendAds(action) {
+  var ret = '';
+  var data = {};
+  data.action = action;
+  if (inIframe()) {
+    data.inframe = true;
+  }
+  $.ajax({url: 'ajax/options-suspend-ads.php',
+    type: 'POST',
+    data: data,
+    success: function (a) {
+      if (action === 'status') {
+        if (a) {
+          flashWarning(a);
+          $("#suspendAds").hide();
+          $("#resumeAds").show();
+        }
+        else {
+          $("#suspendAds").show();
+          $("#resumeAds").hide();
+        }
+      }
+      if (action === 'suspend') {
+        flashSuccess("Ads will not be served until you resume ad serving");
+        $("#suspendAds").hide();
+        $("#resumeAds").show();
+        suspendAds('status');
+      }
+      if (action === 'resume') {
+        flashSuccess("Ads are being served now");
+        $("#suspendAds").show();
+        $("#resumeAds").hide();
+        suspendAds('status');
+      }
+    },
+    error: function (a) {
+      flashError(a.responseText);
+    }
+  });
+  return ret;
+}

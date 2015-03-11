@@ -1,7 +1,10 @@
 <?php
 require 'header.php';
 $plgName = EzGA::getPlgName();
-$plgSlug = EzGA::getSlug();
+$plgSlug = EzGA::getPlgMode();
+if ($plgSlug == 'google-adsense-ultra') {
+  $plgSlug = 'google-adsense';
+}
 $plgPrice = EzGA::$plgPrice;
 require_once '../lib/Ftp.php';
 $ftp = new Ftp();
@@ -66,9 +69,9 @@ else {
   $updateBox = '<div id="updateBox" class="col-md-3 col-sm-3 col-xs-6" style="display:none"><table class="table table-striped table-bordered responsive">
       <thead>
         <tr>
-          <th style="width:50%;min-width:180px">Option</th>
-          <th style="width:25">Value</th>
-          <th class="center-text" style="width:25%;min-width:50px">Help</th>
+          <th style="width:50%;min-width:150px">Option</th>
+          <th style="width:55%;min-width:80px">Value</th>
+          <th class="center-text" style="width:15%;min-width:50px">Help</th>
         </tr>
       </thead>' .
           EzGA::renderOption('allow_updates', $allow_updates) .

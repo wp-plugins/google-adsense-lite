@@ -20,7 +20,7 @@ if (!class_exists("EzGA")) {
         'adsense-now' => 6.95,
         'google-adsense' => 9.45);
     static $border = '';
-    static $kills = array('page', 'sticky', 'home', 'front_page', 'category',
+    static $kills = array('feed', 'page', 'sticky', 'home', 'front_page', 'category',
         'tag', 'archive', 'search', 'single', 'attachment');
     static $unSettable = array('Phone', 'Tablet', 'All', 'Mobile');
     static $noAds = false;
@@ -57,6 +57,10 @@ if (!class_exists("EzGA")) {
     }
 
     static function doPluginActions() {
+      $suspend_ads = self::getGenOption('suspend_ads');
+      if (!empty($suspend_ads)) {
+        return;
+      }
       $plugin_slug = self::getSlug();
       require_once plugin_dir_path(__FILE__) . $plugin_slug . '-frontend.php';
     }

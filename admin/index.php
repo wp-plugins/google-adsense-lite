@@ -11,6 +11,7 @@
 </div>
 
 <?php
+insertAlerts();
 openRow();
 openCell("Introduction", "home", 8);
 $plgName = EzGA::getPlgName();
