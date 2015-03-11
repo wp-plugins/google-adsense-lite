@@ -38,7 +38,7 @@ if (!class_exists("EzGA")) {
     static function isLoggedIn() {
       define('WP_USE_THEMES', false);
       define('WP_INSTALLING', true);
-      global $wpdb;
+      global $wpdb; // used within $wpHeader later for multisite. Do not remove!
       $isLoggedIn = false;
       // check from admin and ajax
       foreach (array("../../../..", "../../../../..") as $dir) {

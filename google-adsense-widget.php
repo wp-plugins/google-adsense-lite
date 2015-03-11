@@ -21,8 +21,7 @@ if (!class_exists("GgAdsWidget")) {
       $format = $plg->options['widgetformat'];
       $metaOptions = EzGA::getMetaOptions();
       EzGA::$metaOptions["show_widget"] = ""; // used in $plg->mkAdBlock
-      $class = get_class($plg);
-      if ($class::$ezCount < $class::$ezMax) {
+      if ($plg->ezCount() < $plg->ezMax()) {
         return $plg->mkAdBlock("widget", $format);
       }
     }

@@ -15,6 +15,14 @@ class GgAdSenseFront {
     $this->defaultText = $this->options['defaultText'];
   }
 
+  function ezMax() {
+    return self::$ezMax;
+  }
+
+  function ezCount() {
+    return self::$ezCount;
+  }
+
   function mkAdText($size = '') {
     $userid = EzGA::$options['userid'];
     if (empty($userid) || $userid == "Your AdSense ID" || $userid == "Empty") {
