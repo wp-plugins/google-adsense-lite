@@ -24,7 +24,7 @@ class GgAdSenseFront {
   }
 
   function mkAdText($size = '') {
-    $userid = EzGA::$options['userid'];
+    $userid = trim(EzGA::$options['userid']);
     if (empty($userid) || $userid == "Your AdSense ID" || $userid == "Empty") {
       return EzGA::handleDefaultText('', $size);
     }
@@ -46,34 +46,34 @@ class GgAdSenseFront {
     $borderColor = EzGA::$options['bordercolor'];
     $corners = EzGA::$options['corners'];
 
-    $adText = "<script type=\"text/javascript\"><!--\n" .
-            "google_ad_client = \"$userid\";\n" .
-            "google_alternate_color = \"FFFFFF\";\n" .
+    $adText = "<script type='text/javascript'><!--\n" .
+            "google_ad_client = '$userid';\n" .
+            "google_alternate_color = 'FFFFFF';\n" .
             "google_ad_width = $w;\n" .
             "google_ad_height = $h;\n" .
-            "google_ad_format = \"$size\";\n" .
-            "google_ad_type = \"$type\";\n" .
-            "google_ad_channel =\"$channel\";\n" .
-            "google_color_border = \"$borderColor\";\n" .
-            "google_color_link = \"$linkColor\";\n" .
-            "google_color_bg = \"$bgColor\";\n" .
-            "google_color_text = \"$textColor\";\n" .
-            "google_color_url = \"$urlColor\";\n" .
-            "google_ui_features = \"$corners\";\n" .
+            "google_ad_format = '$size';\n" .
+            "google_ad_type = '$type';\n" .
+            "google_ad_channel ='$channel';\n" .
+            "google_color_border = '$borderColor';\n" .
+            "google_color_link = '$linkColor';\n" .
+            "google_color_bg = '$bgColor';\n" .
+            "google_color_text = '$textColor';\n" .
+            "google_color_url = '$urlColor';\n" .
+            "google_ui_features = '$corners';\n" .
             "//--></script>\n" .
-            "<script type=\"text/javascript\"\n" .
-            "src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">\n" .
+            "<script type='text/javascript'\n" .
+            "src='http://pagead2.googlesyndication.com/pagead/show_ads.js'>\n" .
             "</script>";
     return $adText;
   }
 
   function getStyle($show) {
     $lookup = array(
-        "floatLeft" => 'float:left',
-        "left" => 'text-align:left',
-        "center" => 'text-align:center',
-        "floatRight" => 'float:right',
-        "right" => 'text-align:right'
+        "floatLeft" => 'float:left;',
+        "left" => 'text-align:left;',
+        "center" => 'text-align:center;',
+        "floatRight" => 'float:right;',
+        "right" => 'text-align:right;'
     );
     if (!empty($lookup[$show])) {
       return $lookup[$show];
@@ -93,7 +93,7 @@ class GgAdSenseFront {
       $css = $this->getStyle($show);
       $adBlock = stripslashes("\n$info\n<!-- Post[$slot] Count:" .
               self::$ezCount . " of " . self::$ezMax . "-->\n" .
-              "<div class='adsense adsense-$slot' style='$css;margin:12px'>" .
+              "<div class='adsense adsense-$slot' style='{$css}margin:12px'>" .
               "$adText</div>\n$info\n");
     }
     return $adBlock;
