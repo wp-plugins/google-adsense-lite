@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.1
-Stable tag: 3.08
+Stable tag: 3.10
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -47,7 +47,7 @@ The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasida
 
 == Upgrade Notice ==
 
-Documentation and usability enhancements.
+This twitter-bootstrap version of the plugin is now feature-complete.
 
 == Screenshots ==
 
@@ -58,11 +58,17 @@ Documentation and usability enhancements.
 
 == Installation ==
 
-The easiest way to install this plugin is to use the WordPress Admin interface. Go to your admin dashboard, find the "Plugins" menu, and click on "Add New". Find this plugin and click on "Install Now" and follow the WordPress instructions.
+= Searching =
+
+The easiest way to install this plugin is to use the WordPress Admin interface. Go to your admin dashboard, find the "Plugins" menu, and click on "Add New". Search for this plugin and click on "Install Now" and follow the WordPress instructions.
+
+= Uploading =
 
 If you want to download it and manually install, you can again use the WordPress dashboard interface. First download the plugin zip file to your local computer. Then go to your admin dashboard, find the "Plugins" menu, and click on "Add New". After clicking on the "Add New" menu item as above, click on "Upload" (below the title "Install Plugins" near the top). Browse for your downloaded zip file, upload it and activate the plugin.
 
-Further updates (and Pro upgrades and module installations) to the plugin can be done easily from the plugin admin page itself, by clicking on the Updates button on the top right corner.
+= Using Plugin Interface =
+
+Further updates (and Pro upgrades and module installations) to the plugin can be done easily from the plugin admin page itself, by clicking on the *Updates* button on the top right corner.
 
 == Frequently Asked Questions ==
 
@@ -88,10 +94,12 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 = Can I go back to the previous version of the plugin? I don't like the modern bootstrap/AJAX interface. =
 
-You can download the [previous version](https://downloads.wordpress.org/plugin/google-adsense-lite.2.50.zip "Last version before the fancy AJAX interface") and install it. First deactivate and delete the latest version of the plugin, and then follow upload method under the *Installation* section of this document. The new version uses an completely different options model, and your old options are left intact in your database.
+You can download the [previous version](https://downloads.wordpress.org/plugin/google-adsense-lite.2.50.zip "Last version before the fancy AJAX interface") and install it. First deactivate and delete the latest version of the plugin, and then follow the *Uploading* method under the *Installation* section of this document. The new version uses an completely different options model, and your old options are left intact in your database, so that you can go back anytime.
 
 == Change Log ==
 
+* V3.10: This twitter-bootstrap version of the plugin is now feature-complete. [Mar 19, 2015]
+* V3.09: Adding information about how to revert to the non-AJAX version of the plugin. [Mar 16, 2015]
 * V3.08: Documentation and usability enhancements. [Mar 13, 2015]
 * V3.07: Documentation and usability enhancements. [Mar 11, 2015]
 * V3.06: More changes for compatibility with PHP5.30. [Mar 11, 2015]
