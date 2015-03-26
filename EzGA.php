@@ -917,11 +917,11 @@ if (!class_exists("EzGA")) {
               'show_lu' => 'adsense-linkunits');
           foreach ($lookup as $optKey => $metaKey) {
             $metaStyle = $metaOptions[$optKey] = '';
-            if (!empty(self::$options[$optKey])) {
-              $metaStyle = self::$options[$optKey];
-            }
-            else if (!empty($postMeta[$metaKey])) {
+            if (!empty($postMeta[$metaKey])) {
               $metaStyle = strtolower($postMeta[$metaKey][0]);
+            }
+            else if (!empty(self::$options[$optKey])) {
+              $metaStyle = self::$options[$optKey];
             }
             $style = $metaStyle; // if the option contains CSS directive
             switch ($metaStyle) {
