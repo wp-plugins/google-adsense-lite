@@ -87,7 +87,7 @@ insertAlerts();
   ?>
 </div>
 <script>
-  var xeditHanlder = 'ajax/options.php';
+  var xeditHandler = 'ajax/options.php';
   var xparams = {};
   xparams.plugin_slug = '<?php echo $options['plugin_slug']; ?>';
   xparams.theme = '<?php echo $options['theme']; ?>';

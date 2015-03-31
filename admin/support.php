@@ -43,7 +43,7 @@ EzGA::showService();
 ?>
 <div class="clearfix"></div>
 <script>
-  var xeditHanlder = 'ajax/options.php';
+  var xeditHandler = 'ajax/options.php';
   var xparams = {};
   $('#verbose').click(function (e) {
     e.preventDefault();

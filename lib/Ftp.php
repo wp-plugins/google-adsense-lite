@@ -164,7 +164,7 @@ if (!class_exists('Ftp')) {
           $table .= EzGA::renderOption($pk, $option);
         }
         $table .= "</tbody></table></div>";
-        $table .= "<script>var xeditHanlder = 'ajax/options.php'; var xparams ={}; $('#showFtp').click(function() { $(this).parent().hide();$('#ftp').fadeIn();});</script>";
+        $table .= "<script>var xeditHandler = 'ajax/options.php'; var xparams ={}; $('#showFtp').click(function() { $(this).parent().hide();$('#ftp').fadeIn();});</script>";
       }
       return $table;
     }
