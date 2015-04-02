@@ -99,6 +99,9 @@ function docReady() {
     html: true
   });
 
+  //popover
+  $('[data-toggle="popover"]').popover({html: true, container: 'body'});
+
   // lightbox
   // delegate calls to data-toggle="lightbox"
   $(document).delegate('*[data-toggle="lightbox"]', 'click', function (event) {
@@ -152,6 +155,7 @@ function docReady() {
       }
     });
   });
+
   // My x-edit interface, with checkbox defined.
   // Assumes that the vars xeditHandler and xparams are defined in the global scope.
   if (typeof xeditHandler !== 'undefined' && typeof xparams !== 'undefined') {
@@ -260,9 +264,6 @@ function docReady() {
     var h = 728;
     return ezPopUp(url, title, w, h);
   });
-
-  //popover
-  $('[data-toggle="popover"]').popover({html: true, container: 'body'});
 
   if (inIframe()) {
     $("#standAloneMode").show();
@@ -402,6 +403,13 @@ function validate_alnum(s) {
   }
 }
 
+function validate_url(s) {
+  var re = /^([a-z]([a-z]|\d|\+|-|\.)*):(\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?((\[(|(v[\da-f]{1,}\.(([a-z]|\d|-|\.|_|~)|[!\$&'\(\)\*\+,;=]|:)+))\])|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=])*)(:\d*)?)(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*|(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)){0})(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
+  if (!re.test(s)) {
+    return "Bad URL";
+  }
+}
+
 var validate = {
   email: function (s) {
     return validate_email(s);
@@ -414,5 +422,8 @@ var validate = {
   },
   alnum: function (s) {
     return validate_alnum(s);
+  },
+  url: function (s) {
+    return validate_url(s);
   }
 };

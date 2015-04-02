@@ -1,5 +1,4 @@
 <?php
-
 include('ezKillLite.php');
 
 if (is_admin()) {
@@ -58,14 +57,38 @@ if (is_admin()) {
         $installImg = $this->plgURL . "admin/img/install.png";
         echo "<div class='error'>";
         require $this->plgDir . '/admin/no-ajax.php';
+        if (!empty($_POST['ezadsense_force_admin'])) {
+          update_option('ezadsense_force_admin', true);
+        }
+        $forceAdmin = get_option('ezadsense_force_admin');
         $src = plugins_url("admin/index.php", __FILE__);
-        if (!@file_get_contents($src)) {
-          echo "<div style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'>This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access.  If you have an <code>.htaccess</code> file in your <code>wp-content</code> folder, please remove it or modify it to allow access to the php files in <code>{$this->plgDir}/</code>.<br> Or <em><strong>Go back to the Non-AJAX Version</strong></em> by following the directions above.</div>";
+        if (!$forceAdmin && !@file_get_contents($src)) {
+          ?>
+          <div style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'>
+            <p>This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access. If you have an <code>.htaccess</code> file in your <code>wp-content</code> or <code>wp-content/plugins</code>folder, please remove it or modify it to allow access to the php files in <code><?php echo $this->plgDir; ?>/</code>.
+            </p>
+            <p>
+              If you would like the plugin to try to open the admin page, please set the option here:
+            </p>
+            <form method="post">
+              <input type="submit" value="Force Admin Page" name="ezadsense_force_admin">
+            </form>
+            <p>
+              <strong>
+                Note that if the plugin still cannot load the admin page after forcing it, you may see a blank or error page here upon reload. If that happens, please deactivate and delete the plugin. It is not compatible with your blog setup.
+              </strong>
+            </p>
+          </div>
+          <?php
           return;
         }
         echo "</div>";
         ?>
         <script type="text/javascript">
+          var errorTimeout = setTimeout(function () {
+            jQuery('#the_iframe').replaceWith("<div class='error' style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'><p>This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access. If you have an <code>.htaccess</code> file in your <code>wp-content</code> or <code>wp-content/plugins</code>folder, please remove it or modify it to allow access to the php files in <code><?php echo $this->plgDir; ?>/</code>.</p><p><strong>If the plugin still cannot load the admin page after forcing it, please deactivate and delete it. It is not compatible with your blog setup.</strong></p></div>");
+            jQuery("#noAjax").show();
+          }, 1000);
           function calcHeight() {
             var w = window,
                     d = document,
@@ -86,7 +109,6 @@ if (is_admin()) {
           });
         </script>
         <?php
-
         echo "<iframe src='$src' frameborder='0' style='overflow:hidden;overflow-x:hidden;overflow-y:hidden;width:100%;position:absolute;top:5px;left:-10px;right:0px;bottom:0px;display:none;' width='100%' height='900px' id='the_iframe' onLoad='calcHeight();'></iframe>";
       }
 
