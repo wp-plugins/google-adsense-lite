@@ -104,12 +104,11 @@ if (is_admin()) {
             window.attachEvent('onresize', calcHeight);
           }
           jQuery(document).ready(function () {
-            jQuery("#the_iframe").show();
             jQuery("#noAjax").hide();
           });
         </script>
         <?php
-        echo "<iframe src='$src' frameborder='0' style='overflow:hidden;overflow-x:hidden;overflow-y:hidden;width:100%;position:absolute;top:5px;left:-10px;right:0px;bottom:0px;display:none;' width='100%' height='900px' id='the_iframe' onLoad='calcHeight();'></iframe>";
+        echo "<iframe src='$src' frameborder='0' style='width:100%;position:absolute;top:5px;left:-10px;right:0px;bottom:0px;' width='100%' height='900px' id='the_iframe' onLoad='calcHeight();'></iframe>";
       }
 
       static function switchTheme() {
