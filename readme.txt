@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.1
-Stable tag: 3.18
+Stable tag: 3.19
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -47,7 +47,7 @@ The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasida
 
 == Upgrade Notice ==
 
-Fixing a style that may have caused the admin page not to appear on some blogs.
+More changes in the compatibility check.
 
 == Screenshots ==
 
@@ -96,8 +96,19 @@ Please report any problems, and share your thoughts and comments [at the plugin 
 
 You can download the [previous version](https://downloads.wordpress.org/plugin/google-adsense-lite.2.50.zip "Last version before the fancy AJAX interface") and install it. First deactivate and delete the latest version of the plugin, and then follow the *Uploading* method under the *Installation* section of this document. The new version uses an completely different options model, and your old options are left intact in your database, so that you can go back anytime.
 
+= Why do I get error message saying something about direct access to plugin files? =
+
+This plugin admin interface is designed with a loosely coupled architecture, which means it interacts with the WordPress core only for certain essential services (login check, plugin activation status, database access etc). Loosely coupled systems tend to be more robust and flexible than tightly integrated ones because they make fewer assumptions about each other. My plugin admin pages are fairly independent, and do not pollute the global scope or leak the style directives or JavaScript functions. In order to achieve this, they are loaded in iFrames within the WordPress admin interface.
+
+Your web server needs direct access to the plugin files to load anything in an iFrame. Some aggressive security settings block this kind of access, usually through an `.htaccess` file in your `wp-content` or `plugins` folders, which is why this plugin gives a corresponding error message if it detects inability to access the files (checked through a `file_get_contents` call on a plugin file URL). But some systems implement further blocks specifically on `file_get_contents` or on iFrames with specific styles (using `mod_securty` rules, for instance), which is why the plugin provides a means to override this auto-detection and force the admin page.
+
+= Is the direct access to plugin files a security hole? =
+
+Note that it is only your own webserver that needs direct access to the PHP files. The reason for preventing such access is that a hacker might be able to upload a malicious PHP (or other executable script) to your web host, which your webserver will run if asked to. Such a concern is valid only on systems where you explicitly permit unchecked file uploads. For instance, if anyone can upload any file to your media folder, and your media folder is not protected against direct access and script execution, you have given the potential hacker an attack vector. This plugin has no upload facility, so allowing your webserver to serve the plugin admin files in an iFrame is completely safe, in my judgement.
+
 == Change Log ==
 
+* V3.19: More changes in the compatibility check. [April 7, 2015]
 * V3.18: Fixing a style that may have caused the admin page not to appear on some blogs. [April 4, 2014]
 * V3.17: More compatibility checks. [April 2, 2015]
 * V3.16: Minor fixes. [Mar 27, 2015]

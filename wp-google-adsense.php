@@ -82,13 +82,19 @@ if (is_admin()) {
           <?php
           return;
         }
+        if ($forceAdmin) {
+          ?>
+          <script type="text/javascript">
+            var errorTimeout = setTimeout(function () {
+              jQuery('#the_iframe').replaceWith("<div class='error' style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'><p>This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access. If you have an <code>.htaccess</code> file in your <code>wp-content</code> or <code>wp-content/plugins</code>folder, please remove it or modify it to allow access to the php files in <code><?php echo $this->plgDir; ?>/</code>.</p><p><strong>If the plugin still cannot load the admin page after forcing it, please deactivate and delete it. It is not compatible with your blog setup.</strong></p></div>");
+              jQuery("#noAjax").show();
+            }, 1000);
+          </script>
+        <?php
+        }
         echo "</div>";
         ?>
-        <script type="text/javascript">
-          var errorTimeout = setTimeout(function () {
-            jQuery('#the_iframe').replaceWith("<div class='error' style='padding:10px;margin:10px;font-size:1.3em;color:red;font-weight:500'><p>This plugin needs direct access to its files so that they can be loaded in an iFrame. Looks like you have some security setting denying the required access. If you have an <code>.htaccess</code> file in your <code>wp-content</code> or <code>wp-content/plugins</code>folder, please remove it or modify it to allow access to the php files in <code><?php echo $this->plgDir; ?>/</code>.</p><p><strong>If the plugin still cannot load the admin page after forcing it, please deactivate and delete it. It is not compatible with your blog setup.</strong></p></div>");
-            jQuery("#noAjax").show();
-          }, 1000);
+        <script>
           function calcHeight() {
             var w = window,
                     d = document,
