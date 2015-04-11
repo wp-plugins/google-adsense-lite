@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.1
-Stable tag: 3.19
+Stable tag: 3.20
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -12,6 +12,10 @@ Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customiza
 == Description ==
 
 Ads EZ Plugin for Google AdSense provides a streamlined interface to deploy Google ads on your blog. You can customize the colors, sizes and placement of the ad blocks and activate them right from the plugin interface.The admin interface uses a highly functional and modern interface based on the twitter bootstrap framework with generous, context-sensitive help on every single option.
+
+= Live Demo =
+
+**Google AdSense admin interface is feature-rich, user-friendly and functional. Please visit this fully operational [live demo site](http://demo.thulasidas.com/google-adsense "Play with Google AdSense Admin Interface") to see what it can do for you.**
 
 Ads EZ Plugin for Google AdSense is a specialized version of [Google AdSense Ultra](http://buy.thulasidas.com/google-adsense "Most versatile AdSense plugin for your blog"), which lets you manage in basic, standard and expert modes, all in a beautifully designed modern interface.
 
@@ -47,7 +51,7 @@ The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasida
 
 == Upgrade Notice ==
 
-More changes in the compatibility check.
+Launching a demo site.
 
 == Screenshots ==
 
@@ -108,6 +112,7 @@ Note that it is only your own webserver that needs direct access to the PHP file
 
 == Change Log ==
 
+* V3.20: Launching a demo site. [April 11, 2015]
 * V3.19: More changes in the compatibility check. [April 7, 2015]
 * V3.18: Fixing a style that may have caused the admin page not to appear on some blogs. [April 4, 2014]
 * V3.17: More compatibility checks. [April 2, 2015]

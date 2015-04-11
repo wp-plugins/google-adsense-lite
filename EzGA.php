@@ -33,7 +33,7 @@ if (!class_exists("EzGA")) {
       $plgSlug = self::getPlgMode();
       $plgSlug = str_replace("-ultra", "", $plgSlug);
       $plugin = basename(dirname(__FILE__)) . "/$plgSlug.php";
-      return is_plugin_active($plugin);
+      return is_plugin_active($plugin) || strpos(__FILE__, 'mu-plugins');;
     }
 
     static function isLoggedIn() {
@@ -54,7 +54,7 @@ if (!class_exists("EzGA")) {
         }
       }
       if (function_exists('current_user_can')) {
-        if (current_user_can('manage_options')) {
+        if (current_user_can('activate_plugins')) {
           $isLoggedIn = true;
         }
       }
@@ -834,7 +834,7 @@ if (!class_exists("EzGA")) {
     }
 
     static function mkRedBox($w, $h, $p) {
-      if (!current_user_can('manage_options')) {
+      if (!current_user_can('activate_plugins')) {
         return;
       }
       if (!empty(self::$options['suppressBoxes'])) {
