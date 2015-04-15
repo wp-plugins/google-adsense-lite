@@ -2,13 +2,22 @@
 $plgName = EzGA::getPlgName();
 $plgSlug = EzGA::getSlug();
 $plgMode = EzGA::getPlgMode();
+$isUltra = $plgMode == 'google-adsense-ultra';
 ?>
 <div class="col-lg-8 col-sm-12">
-  <p>Welcome to <strong><?php echo $plgName; ?></strong>, one of the most popular AdSense plugins ever.  This plugin can operate as <strong>AdSense Now!</strong> (basic mode), <strong>Google AdSense</strong> (default) or <strong>Easy AdSense</strong> (advanced mode).</p>
+  <p>
+    Welcome to <strong><?php echo $plgName; ?></strong>, one of the most popular AdSense plugins ever.
+    <?php
+    if ($isUltra) {
+      ?>This plugin can operate as <strong>AdSense Now!</strong> (basic mode), <strong>Google AdSense</strong> (default) or <strong>Easy AdSense</strong> (advanced mode).
+      <?php
+    }
+    ?>
+  </p>
   <h4>Quick Start</h4>
   <ul>
     <?php
-    if ($plgMode == 'google-adsense-ultra') {
+    if ($isUltra) {
       $plugin_slug = array('name' => __('Plugin Mode', 'easy-common'),
           'value' => EzGA::$pluginModes[$plgSlug],
           'help' => __('Ads EZ Plugin for Google AdSense can operate as any one of the three plugins in the list. For instance, if you have been using Easy AdSense, you can choose to make this plugin work like Easy AdSense. The options you have saved in that plugin will be migrated and you will see them in the familiar interface.', 'easy-common'),

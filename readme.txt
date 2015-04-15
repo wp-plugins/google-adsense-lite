@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.1
-Stable tag: 3.21
+Stable tag: 3.22
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -112,6 +112,7 @@ Note that it is only your own webserver that needs direct access to the PHP file
 
 == Change Log ==
 
+* V3.22: Improvements in the admin dashboard. [April 14, 2015]
 * V3.21: Improvements in the admin dashboard. [April 14, 2015]
 * V3.20: Launching a demo site. [April 11, 2015]
 * V3.19: More changes in the compatibility check. [April 7, 2015]

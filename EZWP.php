@@ -10,7 +10,8 @@ if (!class_exists('EZWP')) {
     static $strPro = 'Lite';
     static $pluginModes = array('adsense-now' => 'AdSense Now!',
         'google-adsense' => 'Google AdSense',
-        'easy-adsense' => 'Easy AdSense');
+        'easy-adsense' => 'Easy AdSense',
+        'ajax-adsense' => 'AJAX AdSense');
 
     static function isPro() {
       $file = dirname(__FILE__) . "/admin/pro.php";
@@ -32,6 +33,9 @@ if (!class_exists('EZWP')) {
         $dir = dirname(__FILE__) . "/admin";
       }
       chdir($dir);
+      if ($mode == "ajax-adsense") {
+        $mode = "easy-adsense";
+      }
       foreach ($required as $format) {
         $file = sprintf($format, $mode);
         if (!file_exists($file)) {
@@ -41,6 +45,7 @@ if (!class_exists('EZWP')) {
       }
       if ($mode == 'google-adsense') {
         $ultra = true;
+        unset($pluginModes['ajax-adsense']);
         foreach ($pluginModes as $p => $name) {
           foreach ($required as $format) {
             $file = sprintf($format, $p);
