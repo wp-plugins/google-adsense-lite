@@ -761,7 +761,7 @@ if (!class_exists("EzGA")) {
 
     static function showService() {
       $select = rand(0, 4);
-      echo "<div class='center-block' style='margin-left:10px;'><a href='http://www.thulasidas.com/professional-php-services/' target='_blank' title='Professional Services' data-content='The author of this plugin may be able to help you with your WordPress or plugin customization needs and other PHP related development. Find a plugin that almost, but not quite, does what you are looking for? Need any other professional PHP/jQuery dev services? Click here!' data-toggle='popover' data-trigger='hover' data-placement='left'><img src='img/svcs/300x250-0$select.jpg' border='0' alt='Professional Services from the Plugin Author' /></a></div><div class='clearfix'></div>";
+      echo "<div class='center-block' style='margin-left:10px;'><a href='http://www.thulasidas.com/professional-php-services/' target='_blank' class='popup-long' title='Professional Services' data-content='The author of this plugin may be able to help you with your WordPress or plugin customization needs and other PHP related development. Find a plugin that almost, but not quite, does what you are looking for? Need any other professional PHP/jQuery dev services? Click here!' data-toggle='popover' data-trigger='hover' data-placement='left'><img src='img/svcs/300x250-0$select.jpg' border='0' alt='Professional Services from the Plugin Author' /></a></div><div class='clearfix'></div>";
     }
 
     // Frontend functions

@@ -1,3 +1,8 @@
+<div style="float:right;display:inline-block">
+  <?php
+  EzGA::showService();
+  ?>
+</div>
 <h2>Ads EZ Plugin for Google AdSense<br>
   <small>Complete Control over Your AdSense Ads</small>
 </h2>
@@ -44,14 +49,7 @@
   <a href='#' id='migrateOptions' class="btn btn-success" data-toggle='tooltip' title="<p>This version of the plugin uses a new option model. If you used an older version before, your options are automatically imported when you activate the plugin. If you find them missing, please click this button to import them again. Note that your modified options are never overwritten by the migration process; so it is safe to run it again.</p>"><i class='glyphicon glyphicon-import'></i> Import Options</a>
 
 </p>
-
-<h3>Credits</h3>
-<ul>
-  <li>The plugin admin interface is based on <a href="http://usman.it/free-responsive-admin-template/">Charisma</a>, a free, responsive admin template built on the twitter bootstrap framework.
-  </li>
-  <li>The Pro version of this plugin uses <a href="http://mobiledetect.net/" target="_blank">Mobile Detect</a>, a lightweight PHP class for detecting mobile devices.
-  </li>
-</ul>
+<div class="clearfix"></div>
 <script>
   $(document).ready(function () {
     $("#suspendAds").click(function () {

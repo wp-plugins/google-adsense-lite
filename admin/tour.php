@@ -1,48 +1,53 @@
 <?php
-require('header.php');
 $plgName = EzGA::getPlgName();
 $plgSlug = EzGA::getSlug();
+$plgMode = EzGA::getPlgMode();
 ?>
-<div>
-  <ul class="breadcrumb">
-    <li>
-      <a href="#">Home</a>
-    </li>
-    <li>
-      <a href="#">Tour</a>
-    </li>
+<div class="col-lg-8 col-sm-12">
+  <p>Welcome to <strong><?php echo $plgName; ?></strong>, one of the most popular AdSense plugins ever.  This plugin can operate as <strong>AdSense Now!</strong> (basic mode), <strong>Google AdSense</strong> (default) or <strong>Easy AdSense</strong> (advanced mode).</p>
+  <h4>Quick Start</h4>
+  <ul>
+    <?php
+    if ($plgMode == 'google-adsense-ultra') {
+      $plugin_slug = array('name' => __('Plugin Mode', 'easy-common'),
+          'value' => EzGA::$pluginModes[$plgSlug],
+          'help' => __('Ads EZ Plugin for Google AdSense can operate as any one of the three plugins in the list. For instance, if you have been using Easy AdSense, you can choose to make this plugin work like Easy AdSense. The options you have saved in that plugin will be migrated and you will see them in the familiar interface.', 'easy-common'),
+          'type' => 'select',
+          'options' => EzGA::$pluginModes);
+      ?>
+      <li>
+        Select <strong>Plugin Mode</strong>. It is currently <?php echo EzGA::renderOptionValue('plugin_slug', $plugin_slug); ?>. (Click on it to change it).
+      </li>
+      <?php
+    }
+    ?>
+    <li>Go to the <a href='<?php echo $plgSlug; ?>-admin.php'>admin page</a></strong> and enter your ad code and other details.</li>
+    <li>If you have the <strong><a href="#" class='goPro' data-product='<?php echo $plgSlug; ?>'>Pro version</a></strong> of <?php echo $plgName; ?>, set up the <a href='pro.php'>Pro features</a>.</li>
+    <li>Take this <strong><a class="restart" href="#">tour</a></strong> any time you would like to go through the application features again.</li>
   </ul>
-</div>
-<h3>Take a Tour of <?php echo $plgName; ?> Features</h3>
-<?php
-openBox("Tour and Help", "globe", 8);
-?>
-<h4>Quick Start</h4>
-<p>Welcome to <?php echo $plgName; ?>, on of the most popular AdSense plugin ever. </p>
-<ul>
-  <li>Go to the <a href='<?php echo $plgSlug; ?>-admin.php'>admin page</a></strong> and enter your ad code and other details.</li>
-  <li>If you have the <strong><a href="#" class='goPro' data-product='<?php echo $plgSlug; ?>'>Pro version</a></strong> of <?php echo $plgName; ?>, set up the <a href='pro.php'>Pro features</a>.</li>
-  <li>Take this <strong><a class="restart" href="#">tour</a></strong> any time you would like to go through the application features again.</li>
-</ul>
-<h4>WordPress and Shortcodes</h4>
-<p>If you are using the <strong><a href="#" class='goPro'>Pro version</a></strong> of <?php echo $plgName; ?>, you can use <a href='http://codex.wordpress.org/Shortcode' target='_blank'>shortcodes</a> to place your ads on your posts and pages. Use the shortcode <code>[adsense]</code> or <code>[ezadsense]</code> to place your ads exactly where you need them on any posts. You can set up intelligent shortcode priority schemes on the <a href='pro.php'>Pro page</a>.</p>
+  <h4>WordPress and Shortcodes</h4>
+  <p>If you are using the <strong><a href="#" class='goPro'>Pro version</a></strong> of <?php echo $plgName; ?>, you can use <a href='http://codex.wordpress.org/Shortcode' target='_blank' class='popup-long'>shortcodes</a> to place your ads on your posts and pages. Use the shortcode <code>[adsense]</code> or <code>[ezadsense]</code> to place your ads exactly where you need them on any posts. You can set up intelligent shortcode priority schemes on the <a href='pro.php'>Pro page</a>.</p>
 
-<h4>Context-Aware Help</h4>
-<p>
-  Every option on the plugin admin and pro pages has a popover help bubble. You just need to hover over the field to get a clear and concise description of what the option does and how to set it up.
-</p>
-<p>
-  The admin and the pro pages also have generous help near the top, which can be expanded by clicking on a clearly marked button. For further support and assistance, please use the channels on the Contact Author panel next to this panel.
-</p>
+  <h4>Context-Aware Help</h4>
+  <p>
+    Every option on the plugin admin and pro pages has a popover help bubble. You just need to hover over the field to get a clear and concise description of what the option does and how to set it up.
+  </p>
+  <p>
+    The admin and the pro pages also have generous help near the top, which can be expanded by clicking on a clearly marked button. For further support and assistance, please use the channels on the Contact Author panel next to this panel. If you need further assistance, please see the <a href='#' id='showSupportChannels'>support channels</a> available.
+  </p>
+</div>
+<div class="col-lg-4 col-sm-12">
+  <?php
+  require_once 'support.php';
+  ?>
+</div>
+<div class="clearfix"></div>
 <hr />
-<p class="center-text"> <a class="btn btn-success center-text restart" href="#" data-toggle='tooltip' title='Start or restart the tour any time' id='restart'><i class="glyphicon glyphicon-globe icon-white"></i>&nbsp; Start the Tour</a></p>
-<?php
-closeCell();
-openCell("Contact Author", 'envelope', 4, "", 260);
-$hideTour = true;
-require_once 'support.php';
-closeBox();
-?>
+<p class="center-text">
+  <a class="btn btn-primary center-text restart" href="#" data-toggle='tooltip' title='Start or restart the tour any time' id='restart'><i class="glyphicon glyphicon-globe icon-white"></i>&nbsp; Start Tour</a>
+  <a class="btn btn-primary center-text showFeatures" href="#" data-toggle='tooltip' title='Show the features of this plugin and its Pro version'><i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Show Features</a>
+  <a class="btn btn-warning center-text showKillAjax" href="#" data-toggle='tooltip' title='If you need to, you can get the old non-AJAX version of the plugin. Click to find out how.'><i class="glyphicon glyphicon-info-sign icon-white"></i>&nbsp; Show AJAX Info</a>
+</p>
 <script>
   $(document).ready(function () {
     if (!$('.tour').length && typeof (tour) === 'undefined') {
@@ -132,10 +137,38 @@ closeBox();
         content: "<p>You now know the <?php echo $plgName; ?> Plugin interface. Congratulations!</p>"
       });
     }
-    $(".restart").click(function () {
+    $("#showSupportChannels").click(function (e) {
+      e.preventDefault();
+      var bg = $("#supportChannels").css("backgroundColor");
+      var fg = $("#supportChannels").css("color");
+      $("#supportChannels").css({backgroundColor: "yellow", color: "black"});
+      setTimeout(function () {
+        $("#supportChannels").css({backgroundColor: bg, color: fg});
+      }, 500);
+    });
+    $(".restart").click(function (e) {
+      e.preventDefault();
       tour.restart();
+    });
+    $(".showFeatures").click(function (e) {
+      e.preventDefault();
+      $("#features").toggle();
+      if ($("#features").is(":visible")) {
+        $(this).html('<i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Hide Features</a>');
+      }
+      else {
+        $(this).html('<i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Show Features</a>');
+      }
+    });
+    $(".showKillAjax").click(function (e) {
+      e.preventDefault();
+      $("#killAjax").toggle();
+      if ($("#killAjax").is(":visible")) {
+        $(this).html('<i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Hide AJAX Info');
+      }
+      else {
+        $(this).html('<i class="glyphicon glyphicon-thumbs-up icon-white"></i>&nbsp; Show AJAX Info');
+      }
     });
   });
 </script>
-<?php
-require('footer.php');
