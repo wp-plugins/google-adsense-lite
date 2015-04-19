@@ -102,7 +102,7 @@ function showScreenshot($id) {
 
 function getHeader() {
   ob_start();
-  $plgName = EzGA::getPlgName();
+  $plgName = EzGA::getPlgName(dirname(__FILE__));
   $plgSlug = EzGA::getSlug();
   $plgModeName = EzGA::$pluginModes[$plgSlug];
   $isPro = EzGA::$isPro;

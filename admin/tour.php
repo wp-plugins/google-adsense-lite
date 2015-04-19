@@ -18,11 +18,13 @@ $isUltra = $plgMode == 'google-adsense-ultra';
   <ul>
     <?php
     if ($isUltra) {
+      $choices = EzGA::$pluginModes;
+      unset($choices['ajax-adsense']);
       $plugin_slug = array('name' => __('Plugin Mode', 'easy-common'),
           'value' => EzGA::$pluginModes[$plgSlug],
           'help' => __('Ads EZ Plugin for Google AdSense can operate as any one of the three plugins in the list. For instance, if you have been using Easy AdSense, you can choose to make this plugin work like Easy AdSense. The options you have saved in that plugin will be migrated and you will see them in the familiar interface.', 'easy-common'),
           'type' => 'select',
-          'options' => EzGA::$pluginModes);
+          'options' => $choices);
       ?>
       <li>
         Select <strong>Plugin Mode</strong>. It is currently <?php echo EzGA::renderOptionValue('plugin_slug', $plugin_slug); ?>. (Click on it to change it).

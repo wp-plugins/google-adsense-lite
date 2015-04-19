@@ -68,6 +68,9 @@ if (!class_exists('EZWP')) {
 
     static function getPlgName($dir = "") {
       $mode = self::getPlgMode($dir);
+      if (strpos($dir, 'ajax-adsense') !== false) {
+        $mode = 'ajax-adsense';
+      }
       if ($mode == 'google-adsense-ultra') {
         self::$strPro = 'Ultra';
         $name = 'Google AdSense Ultra';
