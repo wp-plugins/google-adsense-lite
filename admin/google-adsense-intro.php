@@ -25,7 +25,7 @@
      </ol>"><i class='glyphicon glyphicon-send'></i> Features</a>
 
 
-  <a class="btn btn-primary btn-help" data-toggle='tooltip' title="<p>View Pro Features of this Plugin.<br>Why go Pro? You get all the basic features plus these!</p>" data-content="<p>In addition to the fully functional Lite version, there is a <a href='http://buy.thulasidas.com/google-adsense' title='Get Google AdSense Ultra for $9.45' class='goPro' data-product='google-adsense'>Pro Version</a> with many more features.</p>
+  <a class="btn btn-primary btn-help" data-toggle='tooltip' title="<p>View Pro Features of this Plugin.<br>Why go Pro? You get all the basic features plus these!</p>" data-content="<p>In addition to the fully functional Lite version, there is a <a href='http://buy.thulasidas.com/google-adsense' title='Get Google AdSense Ultra for $8.95' class='goPro' data-product='google-adsense'>Pro Version</a> with many more features.</p>
      <p>If the following features are important to you, consider buying the <em>Pro</em> version.</p>
      <ol>
      <li>Safe Content filter: To ensure that your Google AdSense ads show only on those pages that seem to comply with Google AdSense policies, which can be important since some comments may render your pages inconsistent with those policies.</li>
@@ -38,7 +38,7 @@
      <li>Pause Ad Serving: Ability to temporarily suspend ads</li>
      <li>Statistics: Keep a tab on your ad provider by collecting statistics on your ad serving.</li>
      </ol><p><em><strong>Ads EZ Plugin for Google AdSense Ultra</strong></em> is the evolution of three wildly popular AdSense plugins: <strong>Easy AdSense</strong>, <strong>AdSense Now!</strong> and <strong>Google AdSense</strong>. It combines the features of all three of these plugins, and can operate as any one of them. For instance, if you choose the Easy AdSense mode, a menu item with the title Easy AdSense will appear which will take you to the familiar interface of that plugin.</p>
-     <div class='center-block'><a class='btn btn-sm btn-danger goPro' href='http://buy.thulasidas.com/google-adsense' title='Get Google AdSense Ultra for $9.45' data-product='google-adsense'>Go Pro!</a></div>"><i class='glyphicon glyphicon-plane'></i> Pro Features</a>
+     <div class='center-block'><a class='btn btn-sm btn-danger goPro' href='http://buy.thulasidas.com/google-adsense' title='Get Google AdSense Ultra for $8.95' data-product='google-adsense'>Go Pro!</a></div>"><i class='glyphicon glyphicon-plane'></i> Pro Features</a>
 
   <a href='google-adsense-admin.php' class="btn btn-warning" data-toggle='tooltip' title="<p>Set up the plugin options and enter your AdSense code and details. You can also click on the <strong>Google AdSense</strong> tab above.</p>"><i class='glyphicon glyphicon-cog'></i> Setup Plugin</a>
 
