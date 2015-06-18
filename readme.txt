@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.2
-Stable tag: 3.32
+Stable tag: 3.33
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -51,7 +51,7 @@ The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasida
 
 == Upgrade Notice ==
 
-Admin page improvements.
+Documentation changes only.
 
 == Screenshots ==
 
@@ -84,6 +84,19 @@ All `<div>`s that Ads EZ Plugin for Google AdSense creates have the class attrib
 
 Yes! In Ads EZ Plugin for Google AdSense, you have more options [through **custom fields**] to control ad blocks in individual posts/pages. Add custom fields with keys like **adsense-top, adsense-middle, adsense-bottom** and with values like **left, right, center** or **no** to have control how the ad blocks show up in each post or page. The value "**no**" suppresses all the ad blocks in the post or page for that provider.
 
+= How do I use shortcodes? =
+
+In the Pro version of this plugin, you can control the ad placements using the shortcode `[adsense]` in your blog posts and pages. If you would like to place your ads using shortcodes, please enable it on the Pro page.
+
+By default, only those ads specified by the shortcode will be displayed (when shortcodes are enabled). You can specify how the plugin handles shortcode priority using a drop-down menu. You have these choices:
+
+* Do auto placements if shortcode is missing
+* Do not place any ads if shortcode is missing
+* Always ignore shortcodes and do only auto placement
+* Do not place any ads in posts/pages
+
+The last option effectively disables the plugin for the body of posts and pages, leaving the widgets unaffected.
+
 = I don't understand the Pro features. Porn and site block - can't you set those during Asdense ad setup? =
 
 What you have in AdSense is an ability to block ads from certain sites. For instance, if you don't like ads *from* my site "thulasidas.com", you can block them. What the pro version gives you is the ability to block ads *to* certain clients. That is, if you don't want visitors from certain IP addresses see your ads (because they may click on too many of them, getting your AdSense account banned, for instance), you can with my plugin.
@@ -112,6 +125,7 @@ Note that it is only your own webserver that needs direct access to the PHP file
 
 == Change Log ==
 
+* V3.33: Documentation changes only. [Jun 18, 2015]
 * V3.32: Admin page improvements. [May 22, 2015]
 * V3.31: Admin page compatibility checks and improvements. [May 12, 2015]
 * V3.30: Compatibility with WordPress 4.2. [April 25, 2015]
