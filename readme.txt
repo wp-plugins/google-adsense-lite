@@ -4,7 +4,7 @@ Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
 Tested up to: 4.2
-Stable tag: 3.34
+Stable tag: 3.35
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -51,7 +51,7 @@ The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasida
 
 == Upgrade Notice ==
 
-Minor changes in links.
+Minor improvements in setup, plugin active status check and AJAX functions.
 
 == Screenshots ==
 
@@ -125,6 +125,7 @@ Note that it is only your own webserver that needs direct access to the PHP file
 
 == Change Log ==
 
+* V3.35: Minor improvements in setup, plugin active status check and AJAX functions. [Jul 26, 2015]
 * V3.34: Minor changes in links. [Jun 25, 2015]
 * V3.33: Documentation changes only. [Jun 18, 2015]
 * V3.32: Admin page improvements. [May 22, 2015]
