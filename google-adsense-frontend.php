@@ -117,7 +117,7 @@ class GgAdSenseFront {
 
   function resetFilter() {
     if (self::$filterPass > 1 && is_singular()) {
-      self::$ezMax = $this->options['max_count'] - self::$widgetCount;
+      self::$ezMax = 3 - self::$widgetCount;
       self::$ezCount = self::$widgetCount;
       if ($this->verbose) {
         return " <!-- Filter Reset -->\n";
@@ -175,15 +175,7 @@ class GgAdSenseFront {
       if (self::$ezCount < self::$ezMax && $adCount++ < $adMax) {
         $midtext = $this->mkAdBlock("middle", $this->options['format']);
         if (!EzGA::$foundShortCode) {
-          $paras = EzGA::findParas($content);
-          $half = sizeof($paras);
-          while (sizeof($paras) > $half) {
-            array_pop($paras);
-          }
-          $split = 0;
-          if (!empty($paras)) {
-            $split = $paras[floor(sizeof($paras) / 2)];
-          }
+          $split = EzGA::getSplit($content);
           $content = substr($content, 0, $split) . $midtext . substr($content, $split);
         }
       }
