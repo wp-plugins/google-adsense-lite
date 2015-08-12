@@ -3,8 +3,8 @@ Contributors: manojtd
 Donate link: http://buy.thulasidas.com/google-adsense
 Tags: google adsense, adsense, adsense plugin, ads, advertising, income
 Requires at least: 3.2
-Tested up to: 4.2
-Stable tag: 3.42
+Tested up to: 4.3
+Stable tag: 3.50
 License: GPL2 or later
 
 Ads EZ Plugin for Google AdSense inserts Google ads on your blog, with customization using color pickers, widget support and robust placement options.
@@ -51,7 +51,7 @@ The Ultra version costs $9.45 and can be [purchased online](http://buy.thulasida
 
 == Upgrade Notice ==
 
-Fixing the "Database Replace/Insert Error" that affected some servers.
+Compatibility with WordPress 4.3.
 
 == Screenshots ==
 
@@ -125,6 +125,7 @@ Note that it is only your own webserver that needs direct access to the PHP file
 
 == Change Log ==
 
+* V3.50: Compatibility with WordPress 4.3. [Aug 10, 2015]
 * V3.42: Fixing the "Database Replace/Insert Error" that affected some servers. [Aug 8, 2015]
 * V3.41: Fixing a bug in mobile detection. [Aug 1, 2015]
 * V3.40: The plugin now remembers the last used tab. SQL schema change for better compatibility. Fixing a bug that may have caused the plugin not to display ads on some pages/posts. New option to control mid-text ad position in pro version. [Jul 30, 2015]
